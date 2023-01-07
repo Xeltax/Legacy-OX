@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1675635-81a5-42f2-bdc7-0869ed694d2e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/chat/webpack.config.js.json" beforeDir="false" afterPath="$PROJECT_DIR$/cache/chat/webpack.config.js.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/chat/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/chat/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_sit/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_sit/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_taxijob/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_taxijob/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/data/shops.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/data/shops.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/server.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +56,8 @@
       <workItem from="1673023954596" duration="829000" />
       <workItem from="1673024891085" duration="78000" />
       <workItem from="1673024979393" duration="3216000" />
-      <workItem from="1673029196639" duration="738000" />
+      <workItem from="1673029196639" duration="1204000" />
+      <workItem from="1673109993014" duration="267000" />
     </task>
     <servers />
   </component>

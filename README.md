@@ -8,7 +8,7 @@
 > je pourrais faire du support, mais je ne pourrais pas faire tout le travail pour vous.
 
 ## Installation (Windows)
-1. Télécharger le fichier zip
+1. Télécharger le fichier zip ou cloner le repo (recommandé)
 
 
 2. Dézipper le fichier ou vous le souhaiter
