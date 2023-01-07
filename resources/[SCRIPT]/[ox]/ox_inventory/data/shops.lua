@@ -10,7 +10,7 @@
 
 return {
 	General = {
-		name = 'Shop',
+		name = 'Superette',
 		blip = {
 			id = 59, colour = 69, scale = 0.8
 		}, inventory = {
@@ -28,6 +28,7 @@ return {
 			vec3(2679.25, 3280.12, 55.24),
 			vec3(2557.94, 382.05, 108.62),
 			vec3(373.55, 325.56, 103.56),
+			vec3(-48.38, -1757.78, 29.41),
 		}, targets = {
 			{ loc = vec3(25.06, -1347.32, 29.5), length = 0.7, width = 0.5, heading = 0.0, minZ = 29.5, maxZ = 29.9, distance = 1.5 },
 			{ loc = vec3(-3039.18, 585.13, 7.91), length = 0.6, width = 0.5, heading = 15.0, minZ = 7.91, maxZ = 8.31, distance = 1.5 },
@@ -43,7 +44,7 @@ return {
 	},
 
 	Liquor = {
-		name = 'Liquor Store',
+		name = 'Vendeur d\'Alcool',
 		blip = {
 			id = 93, colour = 69, scale = 0.8
 		}, inventory = {
@@ -68,24 +69,24 @@ return {
 		}
 	},
 
-	YouTool = {
-		name = 'YouTool',
-		blip = {
-			id = 402, colour = 69, scale = 0.8
-		}, inventory = {
-			{ name = 'lockpick', price = 10 }
-		}, locations = {
-			vec3(2748.0, 3473.0, 55.67),
-			vec3(342.99, -1298.26, 32.51)
-		}, targets = {
-			{ loc = vec3(2746.8, 3473.13, 55.67), length = 0.6, width = 3.0, heading = 65.0, minZ = 55.0, maxZ = 56.8, distance = 3.0 }
-		}
-	},
+	--YouTool = {
+	--	name = 'YouTool',
+	--	blip = {
+	--		id = 402, colour = 69, scale = 0.8
+	--	}, inventory = {
+	--		{ name = 'lockpick', price = 10 }
+	--	}, locations = {
+	--		vec3(2748.0, 3473.0, 55.67),
+	--		vec3(342.99, -1298.26, 32.51)
+	--	}, targets = {
+	--		{ loc = vec3(2746.8, 3473.13, 55.67), length = 0.6, width = 3.0, heading = 65.0, minZ = 55.0, maxZ = 56.8, distance = 3.0 }
+	--	}
+	--},
 
 	Ammunation = {
 		name = 'Ammunation',
 		blip = {
-			id = 110, colour = 69, scale = 0.8
+			id = 110, colour = 6, scale = 0.8
 		}, inventory = {
 			{ name = 'ammo-9', price = 5, },
 			{ name = 'WEAPON_KNIFE', price = 200 },
