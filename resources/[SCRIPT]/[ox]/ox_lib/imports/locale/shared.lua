@@ -1,4 +1,4 @@
-local dict = {}
+local dict
 
 ---@param str string
 ---@param ... string | number
@@ -14,7 +14,7 @@ function locale(str, ...)
 		return lstr
 	end
 
-	return str
+	return ("Translation for '%s' does not exist"):format(str)
 end
 
 ---@return { [string]: string }
@@ -23,19 +23,8 @@ function lib.getLocales()
 end
 
 function lib.loadLocale()
-	local locales = json.decode(LoadResourceFile(cache.resource, ('locales/%s.json'):format(GetConvar('ox:locale', 'en'))) or LoadResourceFile(cache.resource, 'locales/en.json') or '[]')
-
-    for k, v in pairs(locales) do
-        for var in v:gmatch('${[%w%s%p]-}') do
-            local locale = locales[var:sub(3, -2)]
-
-            if locale then
-                v = v:gsub(var, locale:gsub('%%', '%%%%'))
-            end
-        end
-
-        dict[k] = v
-    end
+	local JSON = LoadResourceFile(cache.resource, ('locales/%s.json'):format(GetConvar('ox:locale', 'en'))) or LoadResourceFile(cache.resource, 'locales/en.json')
+	dict = JSON and json.decode(JSON) or {}
 end
 
 return lib.loadLocale

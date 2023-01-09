@@ -4,7 +4,7 @@ Config.Locale = GetConvar('esx:locale', 'en')
 
 Config.Price = 100
 
-Config.EnableControls = false
+Config.EnableControls = true
 
 Config.DrawDistance = 10
 Config.Size   = {x = 1.5, y = 1.5, z = 1.0}
@@ -20,7 +20,7 @@ Config.ShopsBlips = {
 	-- 	Blip = nil
 	-- },
 	Mask = {
-		Pos = {
+		Pos = { 
 			vector3(-1338.1, -1278.2, 3.8),
 		},
 		Blip = {sprite = 362, color = 2}
@@ -53,12 +53,12 @@ Config.Zones = {
 			vector3(-3171.8, 1059.6, 19.9),
 			vector3(-1095.6, 2709.2, 18.2),
 		}},
-
+	
 	Mask = {
 		Pos = {
 			vector3(-1338.1, -1278.2, 3.8),
 		}},
-
+	
 	Helmet = {
 		Pos = {
 			vector3(81.5, -1400.6, 28.4),
@@ -76,7 +76,7 @@ Config.Zones = {
 			vector3(-3164.2, 1054.7, 19.9),
 			vector3(-1103.1, 2700.5, 18.2),
 		}},
-
+	
 	Glasses = {
 		Pos = {
 			vector3(75.2, -1391.1, 28.4),
