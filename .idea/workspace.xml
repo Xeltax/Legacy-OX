@@ -7,9 +7,24 @@
     <list default="true" id="b1675635-81a5-42f2-bdc7-0869ed694d2e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/es_extended/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/es_extended/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/es_extended/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/es_extended/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_accessories/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_accessories/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_accessories/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_accessories/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_ambulancejob/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_ambulancejob/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_ambulancejob/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_ambulancejob/resource.rpf.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_property/properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_property/properties.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/ox_target/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_target/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/client/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/client/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/locales/fr.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/locales/fr.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/classes/player.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/classes/player.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/commands.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/commands.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/functions.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/functions.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/paycheck.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/paycheck.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/data/shops.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/data/shops.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/shops/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/shops/client.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/server.cfg" afterDir="false" />
@@ -30,22 +45,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Utilisateur/Documents/LegacyTEST",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Utilisateur/Documents/LegacyTEST&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

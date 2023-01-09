@@ -87,9 +87,13 @@ Locales['fr'] = {
   ['command_setcoords_y'] = 'axe Y',
   ['command_setcoords_z'] = 'axe Z',
   ['command_setjob'] = 'assigner job à un joueur',
+  ['command_setjob2'] = 'assigner job secondaire à un joueur',
   ['command_setjob_job'] = 'nom du job',
+  ['command_setjob2_job2'] = 'nom du job secondaire',
   ['command_setjob_grade'] = 'grade du job',
+  ['command_setjob2_grade'] = 'grade du job secondaire',
   ['command_setjob_invalid'] = 'le job, le grade ou les deux sont invalides',
+  ['command_setjob2_invalid'] = 'le job secondaire, le grade ou les deux sont invalides',
   ['command_setgroup'] = 'assigner un groupe à un joueur',
   ['command_setgroup_group'] = 'nom du groupe',
   ['commanderror_argumentmismatch'] = 'argument count mismatch (passed %s, wanted %s)',
@@ -225,7 +229,7 @@ Locales['fr'] = {
   ['tint_lspd'] = 'skin bleu',
   ['tint_orange'] = 'skin orange',
   ['tint_platinum'] = 'skin platine',
-  
+
   -- Duty related
   ['stopped_duty'] = 'Vous êtes maintenant hors-service.',
   ['started_duty'] = 'Vous êtes maintenant en-service.',

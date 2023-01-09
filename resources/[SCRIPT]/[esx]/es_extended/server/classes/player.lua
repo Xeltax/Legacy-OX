@@ -4,9 +4,9 @@ local DoesEntityExist = DoesEntityExist
 local GetEntityCoords = GetEntityCoords
 local GetEntityHeading = GetEntityHeading
 
-function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, weight, job, loadout, name, coords)
+function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, weight, job, job2, loadout, name, coords)
 	local targetOverrides = Config.PlayerFunctionOverride and Core.PlayerFunctionOverrides[Config.PlayerFunctionOverride] or {}
-	
+
 	local self = {}
 
 	self.accounts = accounts
@@ -15,6 +15,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 	self.identifier = identifier
 	self.inventory = inventory
 	self.job = job
+	self.job2 = job2
 	self.loadout = loadout
 	self.name = name
 	self.playerId = playerId
@@ -25,10 +26,11 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 	if Config.Multichar then self.license = 'license'.. identifier:sub(identifier:find(':'), identifier:len()) else self.license = 'license:'..identifier end
 
 	ExecuteCommand(('add_principal identifier.%s group.%s'):format(self.license, self.group))
-	
+
 	Player(self.source).state:set("identifier", self.identifier, true)
 	Player(self.source).state:set("license", self.license, true)
 	Player(self.source).state:set("job", self.job, true)
+	Player(self.source).state:set("job2", self.job2, true)
 	Player(self.source).state:set("group", self.group, true)
 	Player(self.source).state:set("name", self.name, true)
 
@@ -54,8 +56,8 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 					local heading = GetEntityHeading(Ped)
 					self.coords = {
 						x = coords.x,
-						y = coords.y, 
-						z = coords.z, 
+						y = coords.y,
+						z = coords.z,
 						heading = heading or 0.0
 					}
 				end
@@ -161,6 +163,11 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 		return self.job
 	end
 
+	function self.getJob2()
+		return self.job2
+	end
+
+
 	function self.getLoadout(minimal)
 		if minimal then
 			local minimalLoadout = {}
@@ -201,7 +208,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 	function self.setAccountMoney(accountName, money, reason)
 		reason = reason or 'unknown'
-		if not tonumber(money) then 
+		if not tonumber(money) then
 			print(('[^1ERROR^7] Tried To Set Account ^5%s^0 For Player ^5%s^0 To An Invalid Number -> ^5%s^7'):format(accountName, self.playerId, money))
 			return
 		end
@@ -214,17 +221,17 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 				self.triggerEvent('esx:setAccountMoney', account)
 				TriggerEvent('esx:setAccountMoney', self.source, accountName, money, reason)
-			else 
+			else
 				print(('[^1ERROR^7] Tried To Set Invalid Account ^5%s^0 For Player ^5%s^0!'):format(accountName, self.playerId))
 			end
-		else 
+		else
 			print(('[^1ERROR^7] Tried To Set Account ^5%s^0 For Player ^5%s^0 To An Invalid Number -> ^5%s^7'):format(accountName, self.playerId, money))
 		end
 	end
 
 	function self.addAccountMoney(accountName, money, reason)
 		reason = reason or 'Unknown'
-		if not tonumber(money) then 
+		if not tonumber(money) then
 			print(('[^1ERROR^7] Tried To Set Account ^5%s^0 For Player ^5%s^0 To An Invalid Number -> ^5%s^7'):format(accountName, self.playerId, money))
 			return
 		end
@@ -236,17 +243,17 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 				self.triggerEvent('esx:setAccountMoney', account)
 				TriggerEvent('esx:addAccountMoney', self.source, accountName, money, reason)
-			else 
+			else
 				print(('[^1ERROR^7] Tried To Set Add To Invalid Account ^5%s^0 For Player ^5%s^0!'):format(accountName, self.playerId))
 			end
-		else 
+		else
 			print(('[^1ERROR^7] Tried To Set Account ^5%s^0 For Player ^5%s^0 To An Invalid Number -> ^5%s^7'):format(accountName, self.playerId, money))
 		end
 	end
 
 	function self.removeAccountMoney(accountName, money, reason)
 		reason = reason or 'Unknown'
-		if not tonumber(money) then 
+		if not tonumber(money) then
 			print(('[^1ERROR^7] Tried To Set Account ^5%s^0 For Player ^5%s^0 To An Invalid Number -> ^5%s^7'):format(accountName, self.playerId, money))
 			return
 		end
@@ -259,10 +266,10 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 
 				self.triggerEvent('esx:setAccountMoney', account)
 				TriggerEvent('esx:removeAccountMoney', self.source, accountName, money, reason)
-			else 
+			else
 				print(('[^1ERROR^7] Tried To Set Add To Invalid Account ^5%s^0 For Player ^5%s^0!'):format(accountName, self.playerId))
 			end
-		else 
+		else
 			print(('[^1ERROR^7] Tried To Set Account ^5%s^0 For Player ^5%s^0 To An Invalid Number -> ^5%s^7'):format(accountName, self.playerId, money))
 		end
 	end
@@ -390,6 +397,42 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 			Player(self.source).state:set("job", self.job, true)
 		else
 			print(('[es_extended] [^3WARNING^7] Ignoring invalid ^5.setJob()^7 usage for ID: ^5%s^7, Job: ^5%s^7'):format(self.source, job))
+		end
+	end
+
+	function self.setJob2(job2, grade)
+		grade = tostring(grade)
+		local lastJob2 = json.decode(json.encode(self.job2))
+
+		if ESX.DoesJobExist(job2, grade) then
+			local job2Object, gradeObject = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade]
+
+			self.job2.id    = job2Object.id
+			self.job2.name  = job2Object.name
+			self.job2.label = job2Object.label
+
+			self.job2.grade        = tonumber(grade)
+			self.job2.grade_name   = gradeObject.name
+			self.job2.grade_label  = gradeObject.label
+			self.job2.grade_salary = gradeObject.salary
+
+			if gradeObject.skin_male then
+				self.job2.skin_male = json.decode(gradeObject.skin_male)
+			else
+				self.job2.skin_male = {}
+			end
+
+			if gradeObject.skin_female then
+				self.job2.skin_female = json.decode(gradeObject.skin_female)
+			else
+				self.job2.skin_female = {}
+			end
+
+			TriggerEvent('esx:setJob2', self.source, self.job2, lastJob2)
+			self.triggerEvent('esx:setJob2', self.job2)
+			Player(self.source).state:set("job2", self.job2, true)
+		else
+			print(('[es_extended] [^3WARNING^7] Ignoring invalid ^5.setJob2()^7 usage for ID: ^5%s^7, Job2: ^5%s^7'):format(self.source, job2))
 		end
 	end
 

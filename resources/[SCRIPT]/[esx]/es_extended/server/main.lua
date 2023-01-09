@@ -2,7 +2,7 @@ SetMapName('San Andreas')
 SetGameType('ESX Legacy')
 
 local newPlayer = 'INSERT INTO `users` SET `accounts` = ?, `identifier` = ?, `group` = ?'
-local loadPlayer = 'SELECT `accounts`, `job`, `job_grade`, `group`, `position`, `inventory`, `skin`, `loadout`'
+local loadPlayer = 'SELECT `accounts`, `job`, `job_grade`, `job2`, `job2_grade`, `group`, `position`, `inventory`, `skin`, `loadout`'
 
 if Config.Multichar then
   newPlayer = newPlayer .. ', `firstname` = ?, `lastname` = ?, `dateofbirth` = ?, `sex` = ?, `height` = ?'
@@ -112,10 +112,11 @@ if not Config.Multichar then
 end
 
 function loadESXPlayer(identifier, playerId, isNew)
-  local userData = {accounts = {}, inventory = {}, job = {}, loadout = {}, playerName = GetPlayerName(playerId), weight = 0}
+  local userData = {accounts = {}, inventory = {}, job = {}, job2 = {}, loadout = {}, playerName = GetPlayerName(playerId), weight = 0}
 
   local result = MySQL.prepare.await(loadPlayer, {identifier})
   local job, grade, jobObject, gradeObject = result.job, tostring(result.job_grade)
+	local job2 = result.job2
   local foundAccounts, foundItems = {}, {}
 
   -- Accounts
@@ -168,6 +169,34 @@ function loadESXPlayer(identifier, playerId, isNew)
   if gradeObject.skin_female then
     userData.job.skin_female = json.decode(gradeObject.skin_female)
   end
+
+	-- Job2
+	if ESX.DoesJobExist(job2, grade) then
+		jobObject, gradeObject = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade]
+	else
+		print(('[^3WARNING^7] Ignoring invalid job for ^5%s^7 [job2: ^5%s^7, grade: ^5%s^7]'):format(identifier, job2, grade))
+		job2, grade = 'unemployed', '0'
+		jobObject, gradeObject = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade]
+	end
+
+	userData.job2.id = jobObject.id
+	userData.job2.name = jobObject.name
+	userData.job2.label = jobObject.label
+
+	userData.job2.grade = tonumber(grade)
+	userData.job2.grade_name = gradeObject.name
+	userData.job2.grade_label = gradeObject.label
+	userData.job2.grade_salary = gradeObject.salary
+
+	userData.job2.skin_male = {}
+	userData.job2.skin_female = {}
+
+	if gradeObject.skin_male then
+		userData.job2.skin_male = json.decode(gradeObject.skin_male)
+	end
+	if gradeObject.skin_female then
+		userData.job2.skin_female = json.decode(gradeObject.skin_female)
+	end
 
   -- Inventory
   if not Config.OxInventory then
@@ -277,7 +306,7 @@ function loadESXPlayer(identifier, playerId, isNew)
     end
   end
 
-  local xPlayer = CreateExtendedPlayer(playerId, identifier, userData.group, userData.accounts, userData.inventory, userData.weight, userData.job,
+  local xPlayer = CreateExtendedPlayer(playerId, identifier, userData.group, userData.accounts, userData.inventory, userData.weight, userData.job, userData.job2,
     userData.loadout, userData.playerName, userData.coords)
   ESX.Players[playerId] = xPlayer
 
@@ -304,6 +333,7 @@ function loadESXPlayer(identifier, playerId, isNew)
       identifier = xPlayer.getIdentifier(),
       inventory = xPlayer.getInventory(),
       job = xPlayer.getJob(),
+      job2 = xPlayer.getJob2(),
       loadout = xPlayer.getLoadout(),
       maxWeight = xPlayer.getMaxWeight(),
       money = xPlayer.getMoney(),
@@ -581,7 +611,7 @@ end
 ESX.RegisterServerCallback('esx:getPlayerData', function(source, cb)
   local xPlayer = ESX.GetPlayerFromId(source)
 
-  cb({identifier = xPlayer.identifier, accounts = xPlayer.getAccounts(), inventory = xPlayer.getInventory(), job = xPlayer.getJob(),
+  cb({identifier = xPlayer.identifier, accounts = xPlayer.getAccounts(), inventory = xPlayer.getInventory(), job = xPlayer.getJob(), job2 = xPlayer.getJob2(),
       loadout = xPlayer.getLoadout(), money = xPlayer.getMoney(), position = xPlayer.getCoords(true)})
 end)
 
@@ -596,7 +626,7 @@ end)
 ESX.RegisterServerCallback('esx:getOtherPlayerData', function(source, cb, target)
   local xPlayer = ESX.GetPlayerFromId(target)
 
-  cb({identifier = xPlayer.identifier, accounts = xPlayer.getAccounts(), inventory = xPlayer.getInventory(), job = xPlayer.getJob(),
+  cb({identifier = xPlayer.identifier, accounts = xPlayer.getAccounts(), inventory = xPlayer.getInventory(), job = xPlayer.getJob(), job2 = xPlayer.getJob2(),
       loadout = xPlayer.getLoadout(), money = xPlayer.getMoney(), position = xPlayer.getCoords(true)})
 end)
 

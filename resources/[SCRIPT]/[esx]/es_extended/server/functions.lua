@@ -177,8 +177,8 @@ end
 
 function Core.SavePlayer(xPlayer, cb)
   MySQL.prepare(
-    'UPDATE `users` SET `accounts` = ?, `job` = ?, `job_grade` = ?, `group` = ?, `position` = ?, `inventory` = ?, `loadout` = ? WHERE `identifier` = ?',
-    {json.encode(xPlayer.getAccounts(true)), xPlayer.job.name, xPlayer.job.grade, xPlayer.group, json.encode(xPlayer.getCoords()),
+    'UPDATE `users` SET `accounts` = ?, `job` = ?, `job_grade` = ?, `job2` = ?, `job2_grade` = ?, `group` = ?, `position` = ?, `inventory` = ?, `loadout` = ? WHERE `identifier` = ?',
+    {json.encode(xPlayer.getAccounts(true)), xPlayer.job.name, xPlayer.job.grade, xPlayer.job2.name, xPlayer.job2.grade, xPlayer.group, json.encode(xPlayer.getCoords()),
      json.encode(xPlayer.getInventory(true)), json.encode(xPlayer.getLoadout(true)), xPlayer.identifier}, function(affectedRows)
       if affectedRows == 1 then
         print(('[^2INFO^7] Saved player ^5"%s^7"'):format(xPlayer.name))
@@ -198,12 +198,12 @@ function Core.SavePlayers(cb)
     local time = os.time()
     for i = 1, count do
       local xPlayer = xPlayers[i]
-      parameters[#parameters + 1] = {json.encode(xPlayer.getAccounts(true)), xPlayer.job.name, xPlayer.job.grade, xPlayer.group,
+      parameters[#parameters + 1] = {json.encode(xPlayer.getAccounts(true)), xPlayer.job.name, xPlayer.job.grade, xPlayer.job2.name, xPlayer.job2.grade, xPlayer.group,
                                      json.encode(xPlayer.getCoords()), json.encode(xPlayer.getInventory(true)), json.encode(xPlayer.getLoadout(true)),
                                      xPlayer.identifier}
     end
     MySQL.prepare(
-      "UPDATE `users` SET `accounts` = ?, `job` = ?, `job_grade` = ?, `group` = ?, `position` = ?, `inventory` = ?, `loadout` = ? WHERE `identifier` = ?",
+      "UPDATE `users` SET `accounts` = ?, `job` = ?, `job_grade` = ?, `job2` = ?, `job2_grade` = ?, `group` = ?, `position` = ?, `inventory` = ?, `loadout` = ? WHERE `identifier` = ?",
       parameters, function(results)
         if results then
           if type(cb) == 'function' then
@@ -233,6 +233,10 @@ function ESX.GetExtendedPlayers(key, val)
       if (key == 'job' and v.job.name == val) or v[key] == val then
         xPlayers[#xPlayers + 1] = v
       end
+
+		if (key == 'job2' and v.job2.name == val) or v[key] == val then
+			xPlayers[#xPlayers + 1] = v
+		end
     else
       xPlayers[#xPlayers + 1] = v
     end
@@ -253,7 +257,7 @@ function ESX.GetPlayerFromIdentifier(identifier)
 end
 
 function ESX.GetIdentifier(playerId)
-  local fxDk = GetConvarInt('sv_fxdkMode', 0) 
+  local fxDk = GetConvarInt('sv_fxdkMode', 0)
   if fxDk == 1 then
     return "ESX-DEBUG-LICENCE"
   end
@@ -304,7 +308,7 @@ function ESX.DiscordLogFields(name, title, color, fields)
           ['text'] = "| ESX Logs | " .. os.date(),
           ['icon_url'] = "https://cdn.discordapp.com/attachments/944789399852417096/1020099828266586193/blanc-800x800.png"
       },
-      ['fields'] = fields, 
+      ['fields'] = fields,
       ['description'] = "",
       ['author'] = {
           ['name'] = "ESX Framework",

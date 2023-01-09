@@ -23,6 +23,23 @@ end, true, {help = TranslateCap('command_setjob'), validate = true, arguments = 
 	{name = 'grade', help = TranslateCap('command_setjob_grade'), type = 'number'}
 }})
 
+ESX.RegisterCommand('setjob2', 'admin', function(xPlayer, args, showError)
+	if ESX.DoesJobExist(args.job2, args.grade) then
+		args.playerId.setJob2(args.job2, args.grade)
+	else
+		showError(TranslateCap('command_setjob2_invalid'))
+	end
+	ESX.DiscordLogFields("UserActions", "/setjob2 Triggered", "pink", {
+		{name = "Player", value = xPlayer.name, inline = true},
+		{name = "Job2", value = args.job2, inline = true},
+		{name = "Grade", value = args.grade, inline = true}
+	})
+end, true, {help = TranslateCap('command_setjob2'), validate = true, arguments = {
+	{name = 'playerId', help = TranslateCap('commandgeneric_playerid'), type = 'player'},
+	{name = 'job2', help = TranslateCap('command_setjob2_job2'), type = 'string'},
+	{name = 'grade', help = TranslateCap('command_setjob2_grade'), type = 'number'}
+}})
+
 ESX.RegisterCommand('car', 'admin', function(xPlayer, args, showError)
 	local GameBuild = tonumber(GetConvar("sv_enforceGameBuild", 1604))
 	if not args.car then args.car = GameBuild >= 2699 and "draugur" or "prototipo" end
@@ -32,7 +49,7 @@ ESX.RegisterCommand('car', 'admin', function(xPlayer, args, showError)
     {name = "Vehicle", value = args.car, inline = true}
 	})
 	local upgrades = Config.MaxAdminVehicles and {
-		plate = "ADMINCAR", 
+		plate = "ADMINCAR",
 		modEngine = 3,
 		modBrakes = 2,
 		modTransmission = 2,
@@ -49,7 +66,7 @@ ESX.RegisterCommand('car', 'admin', function(xPlayer, args, showError)
 	end)
 end, false, {help = TranslateCap('command_car'), validate = false, arguments = {
 	{name = 'car',validate = false, help = TranslateCap('command_car_car'), type = 'string'}
-}}) 
+}})
 
 ESX.RegisterCommand({'cardel', 'dv'}, 'admin', function(xPlayer, args, showError)
 	local PedVehicle = GetVehiclePedIsIn(GetPlayerPed(xPlayer.source), false)
@@ -57,7 +74,7 @@ ESX.RegisterCommand({'cardel', 'dv'}, 'admin', function(xPlayer, args, showError
 		DeleteEntity(PedVehicle)
 	end
 	local Vehicles = ESX.OneSync.GetVehiclesInArea(GetEntityCoords(GetPlayerPed(xPlayer.source)), tonumber(args.radius) or 5.0)
-	for i=1, #Vehicles do 
+	for i=1, #Vehicles do
 		local Vehicle = NetworkGetEntityFromNetworkId(Vehicles[i])
 		if DoesEntityExist(Vehicle) then
 			DeleteEntity(Vehicle)
@@ -114,7 +131,7 @@ if not Config.OxInventory then
 
 	ESX.RegisterCommand('giveammo', 'admin', function(xPlayer, args, showError)
 		if args.playerId.hasWeapon(args.weapon) then
-			args.playerId.addWeaponAmmo(args.weapon, args.ammo)   
+			args.playerId.addWeaponAmmo(args.weapon, args.ammo)
 		else
 			showError(TranslateCap("command_giveammo_noweapon_found"))
 		end
@@ -266,7 +283,7 @@ end, false)
 ESX.RegisterCommand('players', "admin", function(xPlayer, args, showError)
 	local xPlayers = ESX.GetExtendedPlayers() -- Returns all xPlayers
 	print("^5"..#xPlayers.." ^2online player(s)^0")
-	for i=1, #(xPlayers) do 
+	for i=1, #(xPlayers) do
 		local xPlayer = xPlayers[i]
 		print("^1[ ^2ID : ^5"..xPlayer.source.." ^0| ^2Name : ^5"..xPlayer.getName().." ^0 | ^2Group : ^5"..xPlayer.getGroup().." ^0 | ^2Identifier : ^5".. xPlayer.identifier .."^1]^0\n")
 	end

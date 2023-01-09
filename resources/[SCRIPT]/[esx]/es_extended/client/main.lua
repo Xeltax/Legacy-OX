@@ -74,7 +74,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer, isNew, skin)
 			end
 		end
 
-		while true do 
+		while true do
 			local Sleep = true
 
 			if Config.DisableHealthRegeneration then
@@ -99,7 +99,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer, isNew, skin)
 				Sleep = false
 				DisablePlayerVehicleRewards(PlayerId)
 			end
-			
+
 			if Config.DisableNPCDrops then
 				Sleep = false
 				RemoveAllPickupsOfType(0xDF711959)
@@ -113,7 +113,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer, isNew, skin)
 					HideHudComponentThisFrame(DisabledComps[i])
 				end
 			end
-				
+
 			Wait(Sleep and 1500 or 0)
 		end
 	end)
@@ -125,13 +125,21 @@ AddEventHandler('esx:playerLoaded', function(xPlayer, isNew, skin)
 		end
 
 		local jobTpl = '<div>{{job_label}}{{grade_label}}</div>'
+		local job2Tpl = '<div>{{job2_label}}{{grade2_label}}</div>'
 
 		local gradeLabel = ESX.PlayerData.job.grade_label ~= ESX.PlayerData.job.label and ESX.PlayerData.job.grade_label or ''
+		local grade2Label = ESX.PlayerData.job2.grade_label ~= ESX.PlayerData.job2.label and ESX.PlayerData.job2.grade_label or ''
 		if gradeLabel ~= '' then gradeLabel = ' - '..gradeLabel end
+		if grade2Label ~= '' then grade2Label = ' - '..grade2Label end
 
 		ESX.UI.HUD.RegisterElement('job', #ESX.PlayerData.accounts, 0, jobTpl, {
 			job_label = ESX.PlayerData.job.label,
 			grade_label = gradeLabel
+		})
+
+		ESX.UI.HUD.RegisterElement('job2', #ESX.PlayerData.accounts, 0, job2Tpl, {
+			job2_label = ESX.PlayerData.job2.label,
+			grade2_label = grade2Label
 		})
 	end
 
@@ -288,7 +296,7 @@ if not Config.OxInventory then
 	RegisterNetEvent('esx:setWeaponTint')
 	AddEventHandler('esx:setWeaponTint', function(weapon, weaponTintIndex)
 		SetPedWeaponTintIndex(ESX.PlayerData.ped, joaat(weapon), weaponTintIndex)
-		
+
 	end)
 
 	RegisterNetEvent('esx:removeWeapon')
@@ -317,6 +325,20 @@ AddEventHandler('esx:setJob', function(Job)
 	end
 	ESX.SetPlayerData('job', Job)
 end)
+
+RegisterNetEvent('esx:setJob2')
+AddEventHandler('esx:setJob2', function(Job2)
+	if Config.EnableHud then
+		local grade2Label = Job2.grade_label ~= Job2.label and Job2.grade_label or ''
+		if grade2Label ~= '' then grade2Label = ' - '..grade2Label end
+		ESX.UI.HUD.UpdateElement('job2', {
+			job2_label = Job2.label,
+			grade2_label = grade2Label
+		})
+	end
+	ESX.SetPlayerData('job2', Job2)
+end)
+
 
 if not Config.OxInventory then
 	RegisterNetEvent('esx:createPickup')
@@ -383,7 +405,7 @@ end
 if Config.EnableHud then
 	CreateThread(function()
 		local isPaused = false
-		
+
 		while true do
 			local time = 500
 			Wait(time)
@@ -416,20 +438,20 @@ function StartServerSyncLoops()
 						if GetSelectedPedWeapon(ESX.PlayerData.ped) ~= -1569615261 then
 							sleep = 1000
 							local _,weaponHash = GetCurrentPedWeapon(ESX.PlayerData.ped, true)
-							local weapon = ESX.GetWeaponFromHash(weaponHash) 
+							local weapon = ESX.GetWeaponFromHash(weaponHash)
 							if weapon then
 								local ammoCount = GetAmmoInPedWeapon(ESX.PlayerData.ped, weaponHash)
-								if weapon.name ~= currentWeapon.name then 
+								if weapon.name ~= currentWeapon.name then
 									currentWeapon.Ammo = ammoCount
 									currentWeapon.name = weapon.name
 								else
 									if ammoCount ~= currentWeapon.Ammo then
 										currentWeapon.Ammo = ammoCount
 										TriggerServerEvent('esx:updateWeaponAmmo', weapon.name, ammoCount)
-									end 
-								end   
+									end
+								end
 							end
-						end    
+						end
 					Wait(sleep)
 					end
 			end)
