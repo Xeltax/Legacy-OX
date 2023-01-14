@@ -280,6 +280,10 @@ ESX.RegisterCommand("noclip", 'admin', function(xPlayer, args, showError)
 	xPlayer.triggerEvent('esx:noclip')
 end, false)
 
+ESX.RegisterCommand("id", 'user', function(xPlayer, args, showError)
+	xPlayer.showNotification("Votre ID est : ~b~"..xPlayer.source.."")
+end, false)
+
 ESX.RegisterCommand('players', "admin", function(xPlayer, args, showError)
 	local xPlayers = ESX.GetExtendedPlayers() -- Returns all xPlayers
 	print("^5"..#xPlayers.." ^2online player(s)^0")

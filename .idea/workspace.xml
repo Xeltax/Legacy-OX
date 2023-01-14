@@ -5,7 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1675635-81a5-42f2-bdc7-0869ed694d2e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/[SQL]/legacy.sql" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SQL]/legacy.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_society/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_society/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_society/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_society/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[CFX]/[test]/example-loadscreen/bankgothic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[CFX]/[test]/example-loadscreen/fxmanifest.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[CFX]/[test]/example-loadscreen/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[CFX]/[test]/example-loadscreen/keks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[CFX]/[test]/example-loadscreen/loadscreen.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/commands.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/commands.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/client/client.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/config.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/fxmanifest.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/vid/esx_intro.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/esx_loadingscreen/vid/esx_loop.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_policejob/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_policejob/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_property/properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_property/properties.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_society/client/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_society/client/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_society/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_society/server/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/esx/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/esx/client.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/esx/server.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/esx/server.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/client.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/fxmanifest.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/fxmanifest.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/locale/shared.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/locale/shared.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/zones/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/zones/client.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/resource/zoneCreator/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/resource/zoneCreator/client.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/server.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +84,10 @@
       <workItem from="1673024979393" duration="3216000" />
       <workItem from="1673029196639" duration="1204000" />
       <workItem from="1673109993014" duration="1195000" />
+      <workItem from="1673547319191" duration="3142000" />
+      <workItem from="1673554718944" duration="1270000" />
+      <workItem from="1673658793230" duration="182000" />
+      <workItem from="1673692154761" duration="3417000" />
     </task>
     <servers />
   </component>

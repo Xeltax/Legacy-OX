@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+:root {
+    --height: 60%;
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #4B7CB6;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+
+#background {
+    position:absolute;
+    z-index:-1;
+    width:100%;
+    height: 100%;
+}
+
+h1 {
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    width: 100%;
+    font-size: 5em;
+    color: #3f3f3f;
+}
+
+.titleContainer {
+    position: absolute;
+    width: 100%;
+    top: 10px;
+    left: 25px;
+}
+
+.all-container{
+    width: 100%;
+    height: 100%;
+}
+
+.img-contain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.img-contain img {
+    max-width: 350px;
+    max-height: 300px;
+    box-shadow: 0px 200px 100px -55px rgba(0, 0, 0, 1);
+    margin : 0 252px 0 50px
+}
+
+.img-contain img:nth-child(2) {
+    animation: 2s ease-in normal fadeIn;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.loading {
+    width: 60px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 5vh;
+    left: 50vw;
+}
+.loading span {
+    display: inline-block;
+    width: 25%;
+    height: var(--height);
+    background-color: #343434;
+}
+
+.loading span:nth-of-type(1) {
+    animation: anime1 1s ease-in-out infinite;
+}
+.loading span:nth-of-type(2) {
+    animation: anime1 1s ease-in-out .15s infinite;
+}
+.loading span:nth-of-type(3) {
+    animation: anime1 1s ease-in-out .3s infinite;
+}
+
+@keyframes anime1 {
+    from {
+        height: var(--height);
+    }
+    40% {
+        height: 100%;
+    }
+    80%{
+        height: var(--height);
+    }
+    to {
+        height: var(--height);
+    }
+}

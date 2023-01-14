@@ -43,7 +43,7 @@ git clone https://github.com/ESX-Org/esx_policejob [esx]/esx_policejob
 
 
 ## Installation
-- Import `esx_policejob.sql` in your database
+- Import `Xel_gang.sql` in your database
 - Add this to your server.cfg:
 
 ```

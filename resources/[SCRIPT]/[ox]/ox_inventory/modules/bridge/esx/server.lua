@@ -15,6 +15,13 @@ AddEventHandler('esx:setJob', function(source, job, lastJob)
 	inventory.player.groups[job.name] = job.grade
 end)
 
+AddEventHandler('esx:setJob2', function(source, job2, lastJob2)
+	local inventory = Inventory(source)
+	if not inventory then return end
+	inventory.player.groups[lastJob2.name] = nil
+	inventory.player.groups[job2.name] = job2.grade
+end)
+
 local ESX
 
 SetTimeout(500, function()
@@ -40,7 +47,8 @@ server.accounts = {
 
 function server.setPlayerData(player)
 	local groups = {
-		[player.job.name] = player.job.grade
+		[player.job.name] = player.job.grade,
+		[player.job2.name] = player.job2.grade
 	}
 
 	return {
