@@ -13,3 +13,13 @@ AddEventHandler('onServerResourceStart', function(resourceName)
         exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight)
     end
 end)
+
+ESX.RegisterServerCallback('Xel_Gang_exemple:retrieveStash', function(source, cb)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local stash = exports.ox_inventory:GetStash(stash.id)
+    if stash then
+        cb(stash)
+    else
+        cb(nil)
+    end
+end)

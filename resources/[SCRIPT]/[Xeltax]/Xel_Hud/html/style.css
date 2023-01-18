@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+html, body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hud-container {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    background: #1D1D1F;
+    opacity: 0.8;
+    border-radius: 8px;
+}
+
+.job-container {
+}
+
+.job-card {
+    color: white;
+    margin: 0 12px 0 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 0 0 0 12px;
+    border-bottom: 1px solid white;
+    border-radius: 6px;
+}
+
+.job-card > p {
+    margin: 0;
+    padding: 12px;
+}
+
+.money-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.money-card {
+    margin: 0 12px 0 12px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 0 0 0 12px;
+
+    border-radius: 6px;
+}
+
+.money-card > p {
+    margin: 0;
+    padding: 12px;
+    font-size: 12px;
+}
+
+.society-container {
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.society-card {
+    margin: 0;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 0 0 0 12px;
+
+    border-radius: 6px;
+}
+
+.society-card > p {
+    margin: 0;
+    padding: 12px;
+    font-size: 12px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
