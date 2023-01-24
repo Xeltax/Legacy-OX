@@ -65,7 +65,7 @@ function OpenMechanicActionsMenu()
 	if Config.EnablePlayerManagement and ESX.PlayerData.job and ESX.PlayerData.job.grade_name == 'boss' then
 		elements[#elements+1] = {
 			icon = 'fas fa-boss',
-			title = TranslateCap('boss_actions'), 
+			title = TranslateCap('boss_actions'),
 			value = 'boss_actions'
 		}
 	end
@@ -109,7 +109,7 @@ function OpenMechanicActionsMenu()
 				if Config.EnablePlayerManagement and ESX.PlayerData.job and (ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'chief' or ESX.PlayerData.job.grade_name == 'experimente') then
 					elements2[#elements2+1] = {
 						icon = 'fas fa-truck',
-						title = 'Slamvan', 
+						title = 'Slamvan',
 						value = 'slamvan3'
 					}
 				end
@@ -153,10 +153,10 @@ function OpenMechanicActionsMenu()
 		elseif Config.OxInventory and (element.value == 'put_stock' or element.value == 'get_stock') then
 			exports.ox_inventory:openInventory('stash', 'society_mechanic')
 			return ESX.CloseContext()
-		elseif element.value == 'put_stock' then
-			OpenPutStocksMenu()
-		elseif element.value == 'get_stock' then
-			OpenGetStocksMenu()
+		--elseif element.value == 'put_stock' then
+		--	OpenPutStocksMenu()
+		--elseif element.value == 'get_stock' then
+		--	OpenGetStocksMenu()
 		elseif element.value == 'boss_actions' then
 			TriggerEvent('esx_society:openBossMenu', 'mechanic', function(data, menu)
 				menu.close()

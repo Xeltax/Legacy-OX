@@ -303,3 +303,29 @@ ESX.RegisterServerCallback('esx_mechanicjob:getPlayerInventory', function(source
 
 	cb({items = items})
 end)
+
+-- Statshes (coffre)
+
+local stash = {
+	id = 'society_mechanic',
+	label = 'Coffre Mécanicien',
+	slots = 50,
+	weight = 100000
+}
+
+AddEventHandler('onServerResourceStart', function(resourceName)
+	if resourceName == 'esx_mechanicjob' or resourceName == GetCurrentResourceName() then
+		print("stash created successfully")
+		exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight)
+	end
+end)
+
+ESX.RegisterServerCallback('esx_mechanicjob:retrieveStash', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local stash = exports.ox_inventory:GetStash(stash.id)
+	if stash then
+		cb(stash)
+	else
+		cb(nil)
+	end
+end)

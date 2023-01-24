@@ -6,32 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="b1675635-81a5-42f2-bdc7-0869ed694d2e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/Xel_Gang_exemple/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/Xel_Gang_exemple/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/Xel_Gang_exemple/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/Xel_Gang_exemple/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/Xel_HUD/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/Xel_HUD/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/Xel_HUD/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/Xel_HUD/resource.rpf.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/files/es_extended/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/es_extended/resource.rpf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/files/es_extended/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/es_extended/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_mechanicjob/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_mechanicjob/resource.rpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/esx_mechanicjob/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_mechanicjob/resource.rpf.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Illegal]/Xel_Gang_exemple/fxmanifest.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Illegal]/Xel_Gang_exemple/fxmanifest.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Illegal]/Xel_Gang_exemple/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Illegal]/Xel_Gang_exemple/server/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/client.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/html/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/html/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/client/functions.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/client/functions.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/config.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/config.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/html/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/html/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/client/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/client/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/locales/fr.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/locales/fr.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/server/main.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_property/properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_property/properties.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/data/shops.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/data/shops.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/data/weapons.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/data/weapons.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/fxmanifest.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/fxmanifest.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/esx/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/esx/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/crafting/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/crafting/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/server.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/server.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/shops/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/shops/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/utils/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/utils/client.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/server.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +81,8 @@
       <workItem from="1673891724733" duration="4082000" />
       <workItem from="1673899653794" duration="2032000" />
       <workItem from="1673979617074" duration="4458000" />
-      <workItem from="1674063366248" duration="5409000" />
+      <workItem from="1674063366248" duration="6189000" />
+      <workItem from="1674147756966" duration="2281000" />
     </task>
     <servers />
   </component>

@@ -1,3 +1,5 @@
+local isPaused = false
+
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
     ESX.PlayerData = xPlayer
@@ -79,5 +81,23 @@ AddEventHandler('esx:setAccountMoney', function(account)
         SendNUIMessage({
             black_money = account.money,
         })
+    end
+end)
+
+CreateThread(function()
+    while true do
+        Wait(300)
+
+        if IsPauseMenuActive() and not isPaused then
+            isPaused = true
+            SendNUIMessage({
+                hide = true,
+            })
+        elseif not IsPauseMenuActive() and isPaused then
+            isPaused = false
+            SendNUIMessage({
+                hide = false,
+            })
+        end
     end
 end)

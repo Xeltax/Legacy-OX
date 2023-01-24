@@ -88,8 +88,8 @@ function ESX.Progressbar(message, length, Options)
 end
 
 function ESX.ShowNotification(message, type, length)
-    if GetResourceState("Xel_Notify") ~= "missing" then
-        return exports["Xel_Notify"]:Notify(type, length, message)
+    if GetResourceState("esx_notify") ~= "missing" then
+        return exports["esx_notify"]:Notify(type, length, message)
     end
 
     print("[^1ERROR^7] ^5ESX Notify^7 is Missing!")
