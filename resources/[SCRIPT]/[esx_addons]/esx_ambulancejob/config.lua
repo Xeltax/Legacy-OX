@@ -19,7 +19,7 @@ Config.DistressBlip = {
 Config.EarlyRespawnTimer          = 60000 * 1  -- time til respawn is available
 Config.BleedoutTimer              = 60000 * 10 -- time til the player bleeds out
 
-Config.EnablePlayerManagement     = false -- Enable society managing (If you are using esx_society).
+Config.EnablePlayerManagement     = true -- Enable society managing (If you are using esx_society).
 
 Config.RemoveWeaponsAfterRPDeath  = true
 Config.RemoveCashAfterRPDeath     = true
@@ -60,6 +60,8 @@ Config.Hospitals = {
 		AmbulanceActions = {
 			vector3(270.5, -1363.0, 23.5)
 		},
+
+		Coffre = vector3(268.2, -1365.2, 24.5),
 
 		Pharmacies = {
 			vector3(230.1, -1366.1, 38.5)

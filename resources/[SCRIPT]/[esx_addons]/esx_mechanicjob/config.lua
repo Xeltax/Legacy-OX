@@ -63,7 +63,14 @@ Config.Zones = {
 		Size  = { x = 20.0, y = 20.0, z = 3.0 },
 		Color = { r = 204, g = 204, b = 0 },
 		Type  = -1
-	}
+	},
+
+	Coffre = {
+		Pos   = vector3(-345.257, -124.694, 39.009 ),
+		Size  = { x = 1.0, y = 1.0, z = 1.0 },
+		Color = { r = 50, g = 200, b = 50 },
+		Type  = 21
+	},
 }
 
 Config.Towables = {

@@ -52,7 +52,14 @@ Config.Zones = {
 		Size    = {x = 1.0, y = 1.0, z = 1.0},
 		Color   = {r = 204, g = 204, b = 0},
 		Type    = 21, Rotate = true
-	}
+	},
+
+	Coffre = {
+		Pos     = {x = 900.80, y = -179.44, z = 73.88},
+		Size    = {x = 1.0, y = 1.0, z = 1.0},
+		Color   = {r = 204, g = 204, b = 0},
+		Type    = 21, Rotate = true
+	},
 }
 
 Config.JobLocations = {

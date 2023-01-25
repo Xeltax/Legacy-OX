@@ -7,6 +7,21 @@ end
 TriggerEvent('esx_phone:registerNumber', 'mechanic', TranslateCap('mechanic_customer'), true, true)
 TriggerEvent('esx_society:registerSociety', 'mechanic', 'mechanic', 'society_mechanic', 'society_mechanic', 'society_mechanic', {type = 'private'})
 
+local stash = {
+	id = 'society_mechanic',
+	label = 'Coffre Concessionaire',
+	slots = 50,
+	weight = 100000
+}
+
+AddEventHandler('onServerResourceStart', function(resourceName)
+	if resourceName == 'esx_mechanicjob' or resourceName == GetCurrentResourceName() then
+		print("Mechanic stash created successfully")
+		exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight)
+	end
+end)
+
+
 local function Harvest(source)
 	SetTimeout(4000, function()
 

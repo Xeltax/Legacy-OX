@@ -1,7 +1,7 @@
 Config                            = {}
 Config.DrawDistance               = 10
 Config.MarkerColor                = {r = 120, g = 120, b = 240}
-Config.EnablePlayerManagement     = false -- enables the actual car dealer job. You'll need esx_addonaccount, esx_billing and esx_society
+Config.EnablePlayerManagement     = true -- enables the actual car dealer job. You'll need esx_addonaccount, esx_billing and esx_society
 Config.ResellPercentage           = 50
 
 Config.Locale = GetConvar('esx:locale', 'en')
@@ -60,6 +60,12 @@ Config.Zones = {
 	ResellVehicle = {
 		Pos   = vector3(-44.6, -1080.7, 25.6),
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
+		Type  = 1
+	},
+
+	Coffre = {
+		Pos   = vector3(-30.6, -1110.9, 25.4),
+		Size  = {x = 1.0, y = 1.0, z = 1.0},
 		Type  = 1
 	}
 

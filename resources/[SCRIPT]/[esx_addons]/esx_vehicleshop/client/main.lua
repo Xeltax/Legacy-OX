@@ -317,8 +317,8 @@ function OpenResellerMenu()
 			{label = TranslateCap('get_rented_vehicles'),            value = 'get_rented_vehicles'},
 			{label = TranslateCap('set_vehicle_owner_sell'),         value = 'set_vehicle_owner_sell'},
 			{label = TranslateCap('set_vehicle_owner_rent'),         value = 'set_vehicle_owner_rent'},
-			{label = TranslateCap('deposit_stock'),                  value = 'put_stock'},
-			{label = TranslateCap('take_stock'),                     value = 'get_stock'}
+			--{label = TranslateCap('deposit_stock'),                  value = 'put_stock'},
+			--{label = TranslateCap('take_stock'),                     value = 'get_stock'}
 	}}, function(data, menu)
 		local action = data.current.value
 
@@ -765,11 +765,25 @@ CreateThread(function()
 				letSleep = false
 
 				if v.Type ~= -1 then
-					DrawMarker(v.Type, v.Pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, nil, nil, false)
+					if ESX.PlayerData.job and ESX.PlayerData.job.name == "cardealer" then
+						DrawMarker(v.Type, v.Pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, nil, nil, false)
+					end
 				end
 
 				if distance < v.Size.x then
 					isInMarker, currentZone = true, k
+				end
+			end
+		end
+
+		local distanceCoffre = #(playerCoords - vector3(Config.Zones.Coffre.Pos.x, Config.Zones.Coffre.Pos.y, Config.Zones.Coffre.Pos.z))
+
+		if ESX.PlayerData.job and ESX.PlayerData.job.name == "cardealer" then
+			if distanceCoffre <= 2.0 then
+				sleep = 0
+				ESX.ShowHelpNotification("Appuyez sur ~INPUT_CONTEXT~ pour accéder au coffre")
+				if IsControlJustReleased(0, 38) then
+					exports.ox_inventory:openInventory('stash', {id = 'society_cardealer'})
 				end
 			end
 		end

@@ -20,6 +20,7 @@ exports('getSharedObject', function()
 end)
 
 if GetResourceState('ox_inventory') ~= 'missing' then
+	print("ox_inventory is installed, using ox_inventory")
   Config.OxInventory = true
   Config.PlayerFunctionOverride = 'OxInventory'
   SetConvarReplicated('inventory:framework', 'esx')

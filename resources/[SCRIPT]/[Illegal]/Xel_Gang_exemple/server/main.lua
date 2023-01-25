@@ -9,7 +9,7 @@ local stash = {
 
 AddEventHandler('onServerResourceStart', function(resourceName)
     if resourceName == 'Xel_Gang_exemple' or resourceName == GetCurrentResourceName() then
-        print("stash created successfully")
+        print("Ballas stash created successfully")
         exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight)
     end
 end)

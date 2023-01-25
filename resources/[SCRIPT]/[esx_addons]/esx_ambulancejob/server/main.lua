@@ -8,6 +8,20 @@ if GetResourceState("esx_society") ~= 'missing' then
 TriggerEvent('esx_society:registerSociety', 'ambulance', 'Ambulance', 'society_ambulance', 'society_ambulance', 'society_ambulance', {type = 'public'})
 end
 
+local stash = {
+	id = 'society_ambulance',
+	label = 'Coffre Hôpital',
+	slots = 50,
+	weight = 100000
+}
+
+AddEventHandler('onServerResourceStart', function(resourceName)
+	if resourceName == 'esx_ambulancejob' or resourceName == GetCurrentResourceName() then
+		print("Police stash created successfully")
+		exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight)
+	end
+end)
+
 RegisterNetEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(playerId)
 	playerId = tonumber(playerId)
@@ -331,7 +345,7 @@ end)
 
 ESX.RegisterServerCallback('esx_ambulancejob:getDeadPlayers', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.job.name == "ambulance" then 
+	if xPlayer.job.name == "ambulance" then
 		cb(deadPlayers)
 	end
 end)
@@ -349,8 +363,8 @@ AddEventHandler('esx_ambulancejob:setDeathStatus', function(isDead)
 
 	if type(isDead) == 'boolean' then
 		MySQL.update('UPDATE users SET is_dead = ? WHERE identifier = ?', {isDead, xPlayer.identifier})
-		
-		if not isDead then 
+
+		if not isDead then
 			local Ambulance = ESX.GetExtendedPlayers("job", "ambulance")
 			for _, xPlayer in pairs(Ambulance) do
 					xPlayer.triggerEvent('esx_ambulancejob:PlayerNotDead', source)

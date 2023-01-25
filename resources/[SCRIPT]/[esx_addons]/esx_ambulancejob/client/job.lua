@@ -13,7 +13,7 @@ end)
 function OpenAmbulanceActionsMenu()
 	local elements = {
 		{unselectable = true, icon = "fas fa-shirt", title = "Ambulance Actions"},
-		{icon = "fas fa-shirt", title = TranslateCap('cloakroom'), value = 'cloakroom'}	
+		{icon = "fas fa-shirt", title = TranslateCap('cloakroom'), value = 'cloakroom'}
 	}
 
 	if Config.EnablePlayerManagement and ESX.PlayerData.job.grade_name == 'boss' then
@@ -194,7 +194,7 @@ CreateThread(function()
 					if distance < Config.DrawDistance then
 						sleep = 0
 						DrawMarker(Config.Marker.type, v, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.Marker.x, Config.Marker.y, Config.Marker.z, Config.Marker.r, Config.Marker.g, Config.Marker.b, Config.Marker.a, false, false, 2, Config.Marker.rotate, nil, nil, false)
-						
+
 
 						if distance < Config.Marker.x then
 							isInMarker, currentHospital, currentPart, currentPartNum = true, hospitalNum, 'AmbulanceActions', k
@@ -209,7 +209,7 @@ CreateThread(function()
 					if distance < Config.DrawDistance then
 						sleep = 0
 						DrawMarker(Config.Marker.type, v, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.Marker.x, Config.Marker.y, Config.Marker.z, Config.Marker.r, Config.Marker.g, Config.Marker.b, Config.Marker.a, false, false, 2, Config.Marker.rotate, nil, nil, false)
-						
+
 
 						if distance < Config.Marker.x then
 							isInMarker, currentHospital, currentPart, currentPartNum = true, hospitalNum, 'Pharmacy', k
@@ -224,7 +224,7 @@ CreateThread(function()
 					if distance < Config.DrawDistance then
 						sleep = 0
 						DrawMarker(v.Marker.type, v.Spawner, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Marker.x, v.Marker.y, v.Marker.z, v.Marker.r, v.Marker.g, v.Marker.b, v.Marker.a, false, false, 2, v.Marker.rotate, nil, nil, false)
-						
+
 
 						if distance < v.Marker.x then
 							isInMarker, currentHospital, currentPart, currentPartNum = true, hospitalNum, 'Vehicles', k
@@ -239,7 +239,7 @@ CreateThread(function()
 					if distance < Config.DrawDistance then
 						sleep = 0
 						DrawMarker(v.Marker.type, v.Spawner, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Marker.x, v.Marker.y, v.Marker.z, v.Marker.r, v.Marker.g, v.Marker.b, v.Marker.a, false, false, 2, v.Marker.rotate, nil, nil, false)
-						
+
 
 						if distance < v.Marker.x then
 							isInMarker, currentHospital, currentPart, currentPartNum = true, hospitalNum, 'Helicopters', k
@@ -254,10 +254,25 @@ CreateThread(function()
 					if distance < Config.DrawDistance then
 						sleep = 0
 						DrawMarker(v.Marker.type, v.From, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Marker.x, v.Marker.y, v.Marker.z, v.Marker.r, v.Marker.g, v.Marker.b, v.Marker.a, false, false, 2, v.Marker.rotate, nil, nil, false)
-						
+
 
 						if distance < v.Marker.x then
 							isInMarker, currentHospital, currentPart, currentPartNum = true, hospitalNum, 'FastTravelsPrompt', k
+						end
+					end
+				end
+			end
+
+			local distanceCoffre = #(playerCoords - Config.Hospitals.CentralLosSantos.Coffre)
+
+			if ESX.PlayerData.job and ESX.PlayerData.job.name == "ambulance" then
+				if distanceCoffre <= 5.0 then
+					sleep = 0
+					DrawMarker(21, Config.Hospitals.CentralLosSantos.Coffre, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 255, 0, 100, false, true, 2, true, false, false, false)
+					if distanceCoffre <= 2.0 then
+						ESX.ShowHelpNotification("Appuyez sur ~INPUT_CONTEXT~ pour accéder au coffre")
+						if IsControlJustReleased(0, 38) then
+							exports.ox_inventory:openInventory('stash', {id = 'society_ambulance'})
 						end
 					end
 				end
@@ -358,7 +373,7 @@ CreateThread(function()
 				if distance < Config.DrawDistance then
 					sleep = 0
 					DrawMarker(v.Marker.type, v.From, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Marker.x, v.Marker.y, v.Marker.z, v.Marker.r, v.Marker.g, v.Marker.b, v.Marker.a, false, false, 2, v.Marker.rotate, nil, nil, false)
-					
+
 
 					if distance < v.Marker.x then
 						FastTravel(v.To.coords, v.To.heading)
@@ -417,7 +432,7 @@ function OpenCloakroomMenu()
 					deadPlayerBlips[playerId] = nil
 				end
 				deadPlayers = {}
-				if Config.Debug then 
+				if Config.Debug then
 					print("[^2INFO^7] Off Duty")
 				end
 			end)
@@ -433,7 +448,7 @@ function OpenCloakroomMenu()
 				ESX.TriggerServerCallback('esx_ambulancejob:getDeadPlayers', function(_deadPlayers)
 					TriggerEvent('esx_ambulancejob:setDeadPlayers', _deadPlayers)
 				end)
-				if Config.Debug then 
+				if Config.Debug then
 					print("[^2INFO^7] Player Sex |^5" .. tostring(skin.sex).."^7")
 					print("[^2INFO^7] On Duty")
 				end
@@ -464,7 +479,7 @@ function OpenPharmacyMenu()
 
 		ESX.OpenContext("right", elements2, function(menu2,element2)
 			local amount = menu2.eles[2].inputValue
-			if Config.Debug then 
+			if Config.Debug then
 				print("[^2INFO^7] Attempting to Give Item - ^5" .. tostring(element.item) .. "^7")
 			end
 			TriggerServerEvent('esx_ambulancejob:giveItem', element.item, amount)
@@ -487,7 +502,7 @@ AddEventHandler('esx_ambulancejob:heal', function(healType, quiet)
 		SetEntityHealth(playerPed, maxHealth)
 	end
 
-	if Config.Debug then 
+	if Config.Debug then
 		print("[^2INFO^7] Healing Player - ^5" .. tostring(healType).. "^7")
 	end
 	if not quiet then
@@ -499,7 +514,7 @@ RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
 	if isOnDuty and job.name ~= 'ambulance' then
 		for playerId,v in pairs(deadPlayerBlips) do
-			if Config.Debug then 
+			if Config.Debug then
 				print("[^2INFO^7] Removing dead blip - ^5" .. tostring(playerId).. "^7")
 			end
 			RemoveBlip(v)
@@ -512,7 +527,7 @@ end)
 
 RegisterNetEvent('esx_ambulancejob:PlayerDead')
 AddEventHandler('esx_ambulancejob:PlayerDead', function(Player)
-	if Config.Debug then 
+	if Config.Debug then
 		print("[^2INFO^7] Player Dead | ^5" .. tostring(Player) .. "^7")
 	end
 	deadPlayers[Player] = "dead"
@@ -524,7 +539,7 @@ AddEventHandler('esx_ambulancejob:PlayerNotDead', function(Player)
 		RemoveBlip(deadPlayerBlips[Player])
 		deadPlayerBlips[Player] = nil
 	end
-	if Config.Debug then 
+	if Config.Debug then
 		print("[^2INFO^7] Player Alive | ^5" .. tostring(Player) .. "^7")
 	end
 	deadPlayers[Player] = nil
@@ -541,11 +556,11 @@ AddEventHandler('esx_ambulancejob:setDeadPlayers', function(_deadPlayers)
 		end
 
 		for playerId,status in pairs(deadPlayers) do
-			if Config.Debug then 
+			if Config.Debug then
 				print("[^2INFO^7] Player Dead | ^5" .. tostring(playerId) .. "^7")
 			end
 			if status == 'distress' then
-				if Config.Debug then 
+				if Config.Debug then
 					print("[^2INFO^7] Creating Distress Blip for Player - ^5" .. tostring(playerId) .. "^7")
 				end
 				local player = GetPlayerFromServerId(playerId)
@@ -573,7 +588,7 @@ AddEventHandler('esx_ambulancejob:PlayerDistressed', function(Player)
 	deadPlayers[Player] = 'distress'
 
 	if isOnDuty then
-		if Config.Debug then 
+		if Config.Debug then
 			print("[^2INFO^7] Player Distress Recived - ID:^5" .. tostring(Player) .. "^7")
 		end
 				ESX.ShowNotification("[DISPATCH]: An Unconscious Person Has Been Reported", "error", 10000)

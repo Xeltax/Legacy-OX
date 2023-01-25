@@ -58,8 +58,8 @@ function OpenMechanicActionsMenu()
 		{icon = "fas fa-car",   title = TranslateCap('vehicle_list'),   value = 'vehicle_list'},
 		{icon = "fas fa-shirt", title = TranslateCap('work_wear'),      value = 'cloakroom'},
 		{icon = "fas fa-shirt", title = TranslateCap('civ_wear'),       value = 'cloakroom2'},
-		{icon = "fas fa-box",   title = TranslateCap('deposit_stock'),  value = 'put_stock'},
-		{icon = "fas fa-box",   title = TranslateCap('withdraw_stock'), value = 'get_stock'}
+		--{icon = "fas fa-box",   title = TranslateCap('deposit_stock'),  value = 'put_stock'},
+		--{icon = "fas fa-box",   title = TranslateCap('withdraw_stock'), value = 'get_stock'}
 	}
 
 	if Config.EnablePlayerManagement and ESX.PlayerData.job and ESX.PlayerData.job.grade_name == 'boss' then
@@ -153,10 +153,10 @@ function OpenMechanicActionsMenu()
 		elseif Config.OxInventory and (element.value == 'put_stock' or element.value == 'get_stock') then
 			exports.ox_inventory:openInventory('stash', 'society_mechanic')
 			return ESX.CloseContext()
-		--elseif element.value == 'put_stock' then
-		--	OpenPutStocksMenu()
-		--elseif element.value == 'get_stock' then
-		--	OpenGetStocksMenu()
+		elseif element.value == 'put_stock' then
+			OpenPutStocksMenu()
+		elseif element.value == 'get_stock' then
+			OpenGetStocksMenu()
 		elseif element.value == 'boss_actions' then
 			TriggerEvent('esx_society:openBossMenu', 'mechanic', function(data, menu)
 				menu.close()
@@ -795,6 +795,18 @@ CreateThread(function()
 					letSleep = false
 				end
 			end
+
+			local distanceCoffre = #(coords - vector3(Config.Zones.Coffre.Pos.x, Config.Zones.Coffre.Pos.y, Config.Zones.Coffre.Pos.z))
+
+
+			if distanceCoffre <= 2.0 then
+				sleep = 0
+				ESX.ShowHelpNotification("Appuyez sur ~INPUT_CONTEXT~ pour accéder au coffre")
+				if IsControlJustReleased(0, 38) then
+					exports.ox_inventory:openInventory('stash', {id = 'society_mechanic'})
+				end
+			end
+
 		end
 	Wait(Sleep)
 	end

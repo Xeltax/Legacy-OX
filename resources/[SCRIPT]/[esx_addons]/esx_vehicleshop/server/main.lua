@@ -3,6 +3,20 @@ local categories, vehicles = {}, {}
 TriggerEvent('esx_phone:registerNumber', 'cardealer', TranslateCap('dealer_customers'), false, false)
 TriggerEvent('esx_society:registerSociety', 'cardealer', TranslateCap('car_dealer'), 'society_cardealer', 'society_cardealer', 'society_cardealer', {type = 'private'})
 
+local stash = {
+	id = 'society_cardealer',
+	label = 'Coffre Concessionaire',
+	slots = 50,
+	weight = 100000
+}
+
+AddEventHandler('onServerResourceStart', function(resourceName)
+	if resourceName == 'esx_vehicleshop' or resourceName == GetCurrentResourceName() then
+		print("Cardealer stash created successfully")
+		exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight)
+	end
+end)
+
 CreateThread(function()
 	local char = Config.PlateLetters
 	char = char + Config.PlateNumbers

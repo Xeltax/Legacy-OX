@@ -7,6 +7,20 @@ end
 TriggerEvent('esx_phone:registerNumber', 'police', TranslateCap('alert_police'), true, true)
 TriggerEvent('esx_society:registerSociety', 'police', 'Police', 'society_police', 'society_police', 'society_police', {type = 'public'})
 
+local stash = {
+	id = 'society_police',
+	label = 'Coffre Police',
+	slots = 50,
+	weight = 100000
+}
+
+AddEventHandler('onServerResourceStart', function(resourceName)
+	if resourceName == 'esx_policejob' or resourceName == GetCurrentResourceName() then
+		print("Police stash created successfully")
+		exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight)
+	end
+end)
+
 RegisterNetEvent('esx_policejob:confiscatePlayerItem')
 AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType, itemName, amount)
 	local source = source

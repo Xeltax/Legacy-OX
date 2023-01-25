@@ -26,6 +26,14 @@ local function nextFreePoint(points, b, len)
     end
 end
 
+local function unableToSplit(polygon)
+    print('The following polygon is malformed and has failed to be split into triangles for debug')
+
+    for k, v in pairs(polygon) do
+        print(k, v)
+    end
+end
+
 local function getTriangles(polygon)
     local triangles = {}
 
@@ -33,29 +41,49 @@ local function getTriangles(polygon)
         for i = 2, #polygon - 1 do
             triangles[#triangles + 1] = mat(polygon[1], polygon[i], polygon[i + 1])
         end
+
+        return triangles
+    end
+
+    if not polygon:isSimple() then
+        unableToSplit(polygon)
+
         return triangles
     end
 
     local points = {}
+    local polygonN = #polygon
 
-    for i = 1, #polygon do
+    for i = 1, polygonN do
         points[i] = polygon[i]
     end
 
     local a, b, c = 1, 2, 3
-    local len = #points
+    local zValue = polygon[1].z
+    local count = 0
 
-    while len - #triangles > 2 do
-        if polygon:containsSegment(glm.segment.getPoint(polygon[a], polygon[c], 0.01), glm.segment.getPoint(polygon[a], polygon[c], 0.99)) then
+    while polygonN - #triangles > 2 do
+        local a2d = polygon[a].xy
+        local c2d = polygon[c].xy
+
+        if polygon:containsSegment(vec3(glm.segment2d.getPoint(a2d, c2d, 0.01), zValue), vec3(glm.segment2d.getPoint(a2d, c2d, 0.99), zValue)) then
             triangles[#triangles + 1] = mat(polygon[a], polygon[b], polygon[c])
             points[b] = false
 
             b = c
-            c = nextFreePoint(points, b, len)
+            c = nextFreePoint(points, b, polygonN)
         else
             a = b
             b = c
-            c = nextFreePoint(points, b, len)
+            c = nextFreePoint(points, b, polygonN)
+        end
+
+        count += 1
+
+        if count > polygonN and #triangles == 0 then
+            unableToSplit(polygon)
+
+            return triangles
         end
     end
 
@@ -241,6 +269,58 @@ lib.zones = {
         end
 
         data.polygon = glm.polygon.new(points)
+
+        if not data.polygon:isPlanar() then
+            local zCoords = {}
+
+            for i = 1, pointN do
+                local zCoord = points[i].z
+
+                if zCoords[zCoord] then
+                    zCoords[zCoord] += 1
+                else
+                    zCoords[zCoord] = 1
+                end
+            end
+
+            local coordsArray = {}
+
+            for coord, count in pairs(zCoords) do
+                coordsArray[#coordsArray + 1] = {
+                    coord = coord,
+                    count = count
+                }
+            end
+
+            table.sort(coordsArray, function(a, b)
+                return a.count > b.count
+            end)
+
+            local zCoord = coordsArray[1].coord
+            local averageTo
+
+            for i = 1, #coordsArray do
+                if coordsArray[i].count < coordsArray[1].count then
+                    averageTo = i - 1
+                    break
+                end
+            end
+
+            if averageTo > 1 then
+                for i = 2, averageTo do
+                    zCoord += coordsArray[i].coord
+                end
+
+                zCoord /= averageTo
+            end
+
+            for i = 1, pointN do
+                points[i] = vec3(data.points[i].xy, zCoord)
+            end
+
+            data.polygon = glm.polygon.new(points)
+        end
+
         data.coords = data.polygon:centroid()
         data.remove = removeZone
         data.contains = contains

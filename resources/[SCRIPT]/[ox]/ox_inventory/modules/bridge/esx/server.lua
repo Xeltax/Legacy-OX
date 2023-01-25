@@ -22,6 +22,7 @@ AddEventHandler('esx:setJob2', function(source, job2, lastJob2)
 	inventory.player.groups[job2.name] = job2.grade
 end)
 
+
 local ESX
 
 SetTimeout(500, function()

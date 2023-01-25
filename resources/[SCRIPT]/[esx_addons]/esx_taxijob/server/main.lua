@@ -9,6 +9,20 @@ TriggerEvent('esx_society:registerSociety', 'taxi', 'Taxi', 'society_taxi', 'soc
     type = 'public'
 })
 
+local stash = {
+	id = 'society_taxi',
+	label = 'Coffre Taxi',
+	slots = 50,
+	weight = 100000
+}
+
+AddEventHandler('onServerResourceStart', function(resourceName)
+	if resourceName == 'esx_taxijob' or resourceName == GetCurrentResourceName() then
+		exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight)
+		print("taxi stash created successfully")
+	end
+end)
+
 RegisterNetEvent('esx_taxijob:success')
 AddEventHandler('esx_taxijob:success', function()
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -48,7 +62,7 @@ end)
 ESX.RegisterServerCallback("esx_taxijob:SpawnVehicle", function(source, cb, model , props)
     local xPlayer = ESX.GetPlayerFromId(source)
 
-    if xPlayer.job.name ~= "taxi" then 
+    if xPlayer.job.name ~= "taxi" then
         print(('[^3WARNING^7] Player ^5%s^7 attempted to Exploit Vehicle Spawing!!'):format(source))
         return
     end
@@ -100,7 +114,7 @@ RegisterNetEvent('esx_taxijob:putStockItems')
 AddEventHandler('esx_taxijob:putStockItems', function(itemName, count)
     local xPlayer = ESX.GetPlayerFromId(source)
 	local sourceItem = xPlayer.getInventoryItem(itemName)
-		
+
     if xPlayer.job.name == 'taxi' then
         TriggerEvent('esx_addoninventory:getSharedInventory', 'society_taxi', function(inventory)
             local item = inventory.getItem(itemName)

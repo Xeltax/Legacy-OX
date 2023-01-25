@@ -61,9 +61,9 @@ function OpenCloakroomMenu()
 		for k,v in ipairs(Config.CustomPeds.shared) do
 			elements[#elements+1] = {
 				icon = "fas fa-shirt",
-				title = v.label, 
-				value = 'freemode_ped', 
-				maleModel = v.maleModel, 
+				title = v.label,
+				value = 'freemode_ped',
+				maleModel = v.maleModel,
 				femaleModel = v.femaleModel
 			}
 		end
@@ -71,9 +71,9 @@ function OpenCloakroomMenu()
 		for k,v in ipairs(Config.CustomPeds[grade]) do
 			elements[#elements+1] = {
 				icon = "fas fa-shirt",
-				title = v.label, 
-				value = 'freemode_ped', 
-				maleModel = v.maleModel, 
+				title = v.label,
+				value = 'freemode_ped',
+				maleModel = v.maleModel,
 				femaleModel = v.femaleModel
 			}
 		end
@@ -218,14 +218,14 @@ function OpenArmoryMenu(station)
 		elements = {
 			{unselectable = true, icon = "fas fa-gun", title = TranslateCap('armory')},
 			{icon = "fas fa-gun", title = TranslateCap('buy_weapons'), value = 'buy_weapons'}
-			
+
 		}
 
 		if Config.EnableArmoryManagement then
 			table.insert(elements, {icon = "fas fa-gun", title = TranslateCap('get_weapon'),     value = 'get_weapon'})
 			table.insert(elements, {icon = "fas fa-gun", title = TranslateCap('put_weapon'),     value = 'put_weapon'})
-			table.insert(elements, {icon = "fas fa-box", title = TranslateCap('remove_object'),  value = 'get_stock'})
-			table.insert(elements, {icon = "fas fa-box", title = TranslateCap('deposit_object'), value = 'put_stock'})
+			--table.insert(elements, {icon = "fas fa-box", title = TranslateCap('remove_object'),  value = 'get_stock'})
+			--table.insert(elements, {icon = "fas fa-box", title = TranslateCap('deposit_object'), value = 'put_stock'})
 		end
 	end
 
@@ -327,10 +327,10 @@ function OpenPoliceActionsMenu()
 
 			elements3[#elements3+1] = {
 				icon = "fas fa-scroll",
-				title = TranslateCap('search_database'), 
+				title = TranslateCap('search_database'),
 				value = 'search_database'
 			}
-			
+
 			ESX.OpenContext("right", elements3, function(menu3,element3)
 				local data2 = {current = element3}
 				local coords  = GetEntityCoords(playerPed)
@@ -442,7 +442,7 @@ function OpenIdentityCardMenu(player)
 		end
 
 		ESX.OpenContext("right", elements, nil, function(menu)
-			OpenPoliceActionsMenu()	
+			OpenPoliceActionsMenu()
 		end)
 	end, GetPlayerServerId(player))
 end
@@ -569,7 +569,7 @@ function LookupVehicle(elementF)
 			ESX.TriggerServerCallback('esx_policejob:getVehicleInfos', function(retrivedInfo)
 				local elements = {
 					{unselectable = true, icon = "fas fa-car", title = element.title},
-					{unselectable = true, icon = "fas fa-car", title = TranslateCap('plate', retrivedInfo.plate)}			
+					{unselectable = true, icon = "fas fa-car", title = TranslateCap('plate', retrivedInfo.plate)}
 				}
 
 				if not retrivedInfo.owner then
@@ -642,7 +642,7 @@ function OpenVehicleInfosMenu(vehicleData)
 		local elements = {
 			{unselectable = true, icon = "fas fa-car", title = TranslateCap('vehicle_info')},
 			{icon = "fas fa-car", title = TranslateCap('plate', retrivedInfo.plate)}
-			
+
 		}
 
 		if not retrivedInfo.owner then
@@ -1279,6 +1279,21 @@ CreateThread(function()
 					end
 				end
 
+				local distanceCoffre = #(playerCoords - Config.PoliceStations.LSPD.Coffre)
+
+				if ESX.PlayerData.job and ESX.PlayerData.job.name == "police" then
+					if distanceCoffre <= 5.0 then
+						sleep = 0
+						DrawMarker(Config.MarkerType.Coffre, Config.PoliceStations.LSPD.Coffre, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, true, false, false, false)
+						if distanceCoffre <= 2.0 then
+							ESX.ShowHelpNotification("Appuyez sur ~INPUT_CONTEXT~ pour accéder au coffre")
+							if IsControlJustReleased(0, 38) then
+								exports.ox_inventory:openInventory('stash', {id = 'society_police'})
+							end
+						end
+					end
+				end
+
 				if Config.EnablePlayerManagement and ESX.PlayerData.job.grade_name == 'boss' then
 					for i=1, #v.BossActions, 1 do
 						local distance = #(playerCoords - v.BossActions[i])
@@ -1338,7 +1353,7 @@ CreateThread(function()
 			local GetClosestObjectOfType = GetClosestObjectOfType
 			local DoesEntityExist = DoesEntityExist
 			local playerCoords = GetEntityCoords(ESX.PlayerData.ped)
-	
+
 			local closestDistance = -1
 			local closestEntity   = nil
 
@@ -1373,8 +1388,8 @@ CreateThread(function()
 end)
 
 ESX.RegisterInput("police:interact", "(ESX PoliceJob) Interact", "keyboard", "E", function()
-	if not CurrentAction then 
-		return 
+	if not CurrentAction then
+		return
 	end
 
 	if not ESX.PlayerData.job or (ESX.PlayerData.job and not ESX.PlayerData.job.name == 'police') then

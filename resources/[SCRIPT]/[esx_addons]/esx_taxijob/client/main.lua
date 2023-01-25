@@ -42,13 +42,13 @@ end
 function GetRandomWalkingNPC()
         local search = {}
         local peds = GetGamePool("CPed")
-    
+
         for i = 1, #peds, 1 do
             if IsPedHuman(peds[i]) and IsPedWalking(peds[i]) and not IsPedAPlayer(peds[i]) then
                 search[#search+1] = peds[i]
             end
         end
-    
+
         if #search > 0 then
             return search[math.random(#search)]
         end
@@ -197,8 +197,8 @@ end
 function OpenTaxiActionsMenu()
     local elements = {
         {unselectable = true, icon = "fas fa-taxi", title = TranslateCap('taxi')},
-        {icon = "fas fa-box",title = TranslateCap('deposit_stock'),value = 'put_stock'}, 
-        {icon = "fas fa-box", title = TranslateCap('take_stock'), value = 'get_stock'}
+        --{icon = "fas fa-box",title = TranslateCap('deposit_stock'),value = 'put_stock'},
+        --{icon = "fas fa-box", title = TranslateCap('take_stock'), value = 'get_stock'}
     }
 
     if Config.EnablePlayerManagement and ESX.PlayerData.job ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
@@ -210,14 +210,16 @@ function OpenTaxiActionsMenu()
     end
 
     ESX.OpenContext("right", elements, function(menu,element)
-        if Config.OxInventory and (element.value == 'put_stock' or element.value == 'get_stock') then
-            exports.ox_inventory:openInventory('stash', 'society_taxi')
-            return ESX.CloseContext()
-        elseif element.value == 'put_stock' then
-            OpenPutStocksMenu()
-        elseif element.value == 'get_stock' then
-            OpenGetStocksMenu()
-        elseif element.value == 'boss_actions' then
+        --if true and (element.value == 'put_stock' or element.value == 'get_stock') then
+        --    exports.ox_inventory:openInventory('stash', {id = 'society_taxi'})
+        --    return ESX.CloseContext()
+        --elseif element.value == 'put_stock' then
+        --    OpenPutStocksMenu()
+        --elseif element.value == 'get_stock' then
+        --    OpenGetStocksMenu()
+        --else
+		if element.value == 'boss_actions' then
+
             TriggerEvent('esx_society:openBossMenu', 'taxi', function(data, menu)
                 menu.close()
             end)
@@ -347,7 +349,7 @@ function OpenGetStocksMenu()
         CurrentAction = 'taxi_actions_menu'
         CurrentActionMsg = TranslateCap('press_to_open')
         CurrentActionData = {}
-    end)    
+    end)
 end
 
 function OpenPutStocksMenu()
@@ -382,7 +384,7 @@ function OpenPutStocksMenu()
 
                 if count == nil then
                     ESX.ShowNotification(TranslateCap('quantity_invalid'))
-                else                    
+                else
                     ESX.CloseContext()
                     -- todo: refresh on callback
                     TriggerServerEvent('esx_taxijob:putStockItems', itemName, count)
@@ -395,7 +397,7 @@ function OpenPutStocksMenu()
         CurrentAction = 'taxi_actions_menu'
         CurrentActionMsg = TranslateCap('press_to_open')
         CurrentActionData = {}
-    end)  
+    end)
 end
 
 AddEventHandler('esx_taxijob:hasEnteredMarker', function(zone)
@@ -473,14 +475,28 @@ CreateThread(function()
 
                 if v.Type ~= -1 and distance < Config.DrawDistance then
                     sleep = 0
-                    DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Size.x, v.Size.y,
-                        v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, false, 2, v.Rotate, nil, nil, false)
+					if ESX.PlayerData.job and ESX.PlayerData.job.name == "taxi" then
+						DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, v.Size.x, v.Size.y,
+							v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, false, 2, v.Rotate, nil, nil, false)
+					end
                 end
 
                 if distance < v.Size.x then
                     isInMarker, currentZone = true, k
                 end
             end
+
+			local distanceCoffre = #(coords - vector3(Config.Zones.Coffre.Pos.x, Config.Zones.Coffre.Pos.y, Config.Zones.Coffre.Pos.z))
+
+			if ESX.PlayerData.job and ESX.PlayerData.job.name == "taxi" then
+				if distanceCoffre <= 2.0 then
+					sleep = 0
+					ESX.ShowHelpNotification("Appuyez sur ~INPUT_CONTEXT~ pour accéder au coffre")
+					if IsControlJustReleased(0, 38) then
+						exports.ox_inventory:openInventory('stash', {id = 'society_taxi'})
+					end
+				end
+			end
 
             if (isInMarker and not HasAlreadyEnteredMarker) or (isInMarker and LastZone ~= currentZone) then
                 HasAlreadyEnteredMarker, LastZone = true, currentZone
@@ -506,7 +522,7 @@ CreateThread(function()
             local playerPed = PlayerPedId()
             if CurrentCustomer == nil then
                 DrawSub(TranslateCap('drive_search_pass'), 5000)
-            
+
                 if IsPedInAnyVehicle(playerPed, false) and OnJob then
                     Wait(5000)
                         CurrentCustomer = GetRandomWalkingNPC()
