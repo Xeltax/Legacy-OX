@@ -19,45 +19,64 @@ AddEventHandler("Xel_Hud:sendInfo", function(money, bank, black_money)
         black_money = black_money
     })
 
-    ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(society_money)
-        SendNUIMessage({
-            job = ESX.PlayerData.job,
-            society = society_money
-        })
-    end, ESX.PlayerData.job.name)
 
-    ESX.TriggerServerCallback('esx_society:getSocietyMoney2', function(society_money)
-        SendNUIMessage({
-            job2 = ESX.PlayerData.job2,
-            society2 = society_money
-        })
-    end, ESX.PlayerData.job2.name)
+    if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.grade_name == "boss" then
+        ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(society_money)
+            SendNUIMessage({
+                job = ESX.PlayerData.job,
+                society = society_money
+            })
+        end, ESX.PlayerData.job.name)
+    end
+
+    if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.grade_name == "boss" then
+        ESX.TriggerServerCallback('esx_society:getSocietyMoney2', function(society_money)
+            SendNUIMessage({
+                job2 = ESX.PlayerData.job2,
+                society2 = society_money
+            })
+        end, ESX.PlayerData.job2.name)
+    end
 end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
     ESX.PlayerData.job = job
 
-    ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
-        SendNUIMessage({
-            loaded = true,
-            job = ESX.PlayerData.job,
-            society = money
-        })
-    end, ESX.PlayerData.job.name)
+    SendNUIMessage({
+        loaded = true,
+        job = ESX.PlayerData.job,
+    })
+
+    if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.grade_name == "boss" then
+        ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
+            SendNUIMessage({
+                loaded = true,
+                job = ESX.PlayerData.job,
+                society = money
+            })
+        end, ESX.PlayerData.job.name)
+    end
 end)
 
 RegisterNetEvent('esx:setJob2')
 AddEventHandler('esx:setJob2', function(job2)
     ESX.PlayerData.job2 = job2
 
-    ESX.TriggerServerCallback('esx_society:getSocietyMoney2', function(money)
-        SendNUIMessage({
-            loaded = true,
-            job2 = ESX.PlayerData.job2,
-            society2 = money
-        })
-    end, ESX.PlayerData.job2.name)
+    SendNUIMessage({
+        loaded = true,
+        job2 = ESX.PlayerData.job2,
+    })
+
+    if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.grade_name == "boss" then
+        ESX.TriggerServerCallback('esx_society:getSocietyMoney2', function(money)
+            SendNUIMessage({
+                loaded = true,
+                job2 = ESX.PlayerData.job2,
+                society2 = money
+            })
+        end, ESX.PlayerData.job2.name)
+    end
 end)
 
 RegisterNetEvent('esx:setAccountMoney')

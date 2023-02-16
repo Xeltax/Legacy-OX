@@ -58,21 +58,25 @@ window.addEventListener('message', (event) => {
         black_money.textContent = event.data.black_money.toString().split(/(?=(?:...)*$)/).join(" ");
     }
 
-    if (event.data.society != null) {
+    if (event.data.job !== undefined) {
         if (event.data.job.grade_name === "boss") {
-            society.style.display = "flex";
-            societyText.animate([{ opacity : "0"}, {opacity : "1"}], {duration: 1000, fill: "forwards"});
-            societyText.textContent = event.data.society;
+            if (event.data.society != null) {
+                society.style.display = "flex";
+                societyText.animate([{ opacity : "0"}, {opacity : "1"}], {duration: 1000, fill: "forwards"});
+                societyText.textContent = event.data.society;
+            }
         } else {
             society.style.display = "none";
         }
     }
 
-    if (event.data.society2 != null) {
+    if (event.data.job2 !== undefined) {
         if (event.data.job2.grade_name === "boss") {
-            society2.style.display = "flex";
-            society2Text.animate([{ opacity : "0"}, {opacity : "1"}], {duration: 1000, fill: "forwards"});
-            society2Text.textContent = event.data.society2;
+            if (event.data.society2 != null) {
+                society2.style.display = "flex";
+                society2Text.animate([{ opacity : "0"}, {opacity : "1"}], {duration: 1000, fill: "forwards"});
+                society2Text.textContent = event.data.society2;
+            }
         } else {
             society2.style.display = "none";
         }

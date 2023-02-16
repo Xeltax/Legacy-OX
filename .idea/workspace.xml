@@ -5,63 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1675635-81a5-42f2-bdc7-0869ed694d2e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/Xel_Gang_exemple/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/Xel_Gang_exemple/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/Xel_Gang_exemple/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/Xel_Gang_exemple/resource.rpf.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/files/Xel_HUD/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/Xel_HUD/resource.rpf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/files/Xel_HUD/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/Xel_HUD/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_ambulancejob/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_ambulancejob/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_ambulancejob/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_ambulancejob/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_mechanicjob/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_mechanicjob/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_mechanicjob/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_mechanicjob/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_policejob/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_policejob/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_policejob/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_policejob/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_taxijob/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_taxijob/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_taxijob/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_taxijob/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_vehicleshop/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_vehicleshop/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/esx_vehicleshop/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/esx_vehicleshop/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_inventory/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_lib/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/ox_target/resource.rpf" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_target/resource.rpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/files/ox_target/resource.rpf.db" beforeDir="false" afterPath="$PROJECT_DIR$/cache/files/ox_target/resource.rpf.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Illegal]/Xel_Gang_exemple/config.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Illegal]/Xel_Gang_exemple/config.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Illegal]/Xel_Gang_exemple/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Illegal]/Xel_Gang_exemple/server/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/common.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx]/es_extended/server/common.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_ambulancejob/client/job.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_ambulancejob/client/job.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_ambulancejob/config.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_ambulancejob/config.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_ambulancejob/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_ambulancejob/server/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/client/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/client/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/config.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/config.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_mechanicjob/server/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_policejob/client/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_policejob/client/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_policejob/config.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_policejob/config.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_policejob/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_policejob/server/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/styles/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/App.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/pages/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/styles/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/WebCore/untitled/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/client.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/html/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[Xeltax]/Xel_Hud/html/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_property/properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_property/properties.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_taxijob/client/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_taxijob/client/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_taxijob/config.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_taxijob/config.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_taxijob/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_taxijob/server/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_vehicleshop/client/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_vehicleshop/client/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_vehicleshop/config.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_vehicleshop/config.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_vehicleshop/server/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[esx_addons]/esx_vehicleshop/server/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/fxmanifest.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/fxmanifest.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/locales/nl.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/locales/nl.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/locales/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/locales/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/esx/server.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/bridge/esx/server.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/crafting/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/crafting/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/crafting/server.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/crafting/server.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/server.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/inventory/server.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/weapon/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_inventory/modules/weapon/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/fxmanifest.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/fxmanifest.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/locale/shared.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/locale/shared.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/table/shared.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/table/shared.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/zones/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/imports/zones/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/resource/zoneCreator/client.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_lib/resource/zoneCreator/client.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_target/client/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_target/client/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_target/fxmanifest.lua" beforeDir="false" afterPath="$PROJECT_DIR$/resources/[SCRIPT]/[ox]/ox_target/fxmanifest.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/server.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +82,14 @@
       <workItem from="1673979617074" duration="4458000" />
       <workItem from="1674063366248" duration="6189000" />
       <workItem from="1674147756966" duration="2281000" />
-      <workItem from="1674667971471" duration="5980000" />
+      <workItem from="1674667971471" duration="6259000" />
+      <workItem from="1674912293906" duration="9432000" />
+      <workItem from="1675355494514" duration="643000" />
+      <workItem from="1675549644476" duration="607000" />
+      <workItem from="1676011072485" duration="46000" />
+      <workItem from="1676136849875" duration="880000" />
+      <workItem from="1676212267325" duration="2106000" />
+      <workItem from="1676278435735" duration="2704000" />
     </task>
     <servers />
   </component>
