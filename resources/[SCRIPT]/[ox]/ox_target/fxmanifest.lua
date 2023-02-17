@@ -7,7 +7,7 @@ game 'gta5'
 -- Resource Information
 name 'ox_target'
 author 'Overextended'
-version '1.6.4'
+version '1.7.0'
 repository 'https://github.com/overextended/ox_target'
 description ''
 
@@ -20,11 +20,11 @@ shared_scripts {
 
 client_scripts {
 	'@ox_lib/init.lua',
+	'client/framework/*.lua',
 	'client/utils.lua',
 	'client/api.lua',
 	'client/debug.lua',
 	'client/defaults.lua',
-	'client/framework/*.lua',
 	'client/compat/*.lua',
 	'client/main.lua',
 }

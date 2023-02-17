@@ -49,6 +49,7 @@ AddEventHandler('esx:setJob', function(job)
     })
 
     if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.grade_name == "boss" then
+        Citizen.Wait(100)
         ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
             SendNUIMessage({
                 loaded = true,
@@ -69,6 +70,7 @@ AddEventHandler('esx:setJob2', function(job2)
     })
 
     if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.grade_name == "boss" then
+        Citizen.Wait(100)
         ESX.TriggerServerCallback('esx_society:getSocietyMoney2', function(money)
             SendNUIMessage({
                 loaded = true,
@@ -99,6 +101,25 @@ AddEventHandler('esx:setAccountMoney', function(account)
     elseif (account.name == "black_money") then
         SendNUIMessage({
             black_money = account.money,
+        })
+    end
+end)
+
+RegisterNetEvent('esx_addonaccount:setMoney')
+AddEventHandler('esx_addonaccount:setMoney', function(society, money)
+    if ESX.PlayerData.job and ESX.PlayerData.job.grade_name == 'boss' and 'society_' .. ESX.PlayerData.job.name == society then
+        SendNUIMessage({
+            loaded = true,
+            job = ESX.PlayerData.job,
+            society = money
+        })
+    end
+
+    if ESX.PlayerData.job2 and ESX.PlayerData.job2.grade_name == 'boss' and 'society_' .. ESX.PlayerData.job2.name == society then
+        SendNUIMessage({
+            loaded = true,
+            job2 = ESX.PlayerData.job2,
+            society2 = money
         })
     end
 end)

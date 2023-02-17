@@ -169,6 +169,7 @@ Inventory.Stashes = setmetatable(data('stashes'), {
 									icon = stash.target.icon or 'fas fa-warehouse',
 									label = stash.target.label or locale('open_stash'),
 									job = stash.groups,
+									job2 = stash.groups,
 									action = function()
 										exports.ox_inventory:openInventory('stash', stash.name)
 									end,

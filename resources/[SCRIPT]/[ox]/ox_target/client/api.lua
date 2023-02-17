@@ -41,6 +41,12 @@ local function addTarget(target, options, resource)
         TypeError('options', 'table', optionsType)
     end
 
+    local tableType = table.type(options)
+
+    if tableType ~= 'array' then
+        TypeError('options', 'array', ('%s table'):format(tableType))
+    end
+
     local num = #target
 
     for i = 1, #options do
@@ -127,7 +133,7 @@ function target.addModel(arr, options)
 
     for i = 1, #arr do
         local model = arr[i]
-        model = type(model) == 'string' and joaat(model) or model
+        model = tonumber(model) or joaat(model)
 
         if not Models[model] then
             Models[model] = {}
@@ -145,7 +151,7 @@ function target.removeModel(arr, options)
 
     for i = 1, #arr do
         local model = arr[i]
-        model = type(model) == 'string' and joaat(model) or model
+        model = tonumber(model) or joaat(model)
 
         if Models[model] then
             if options then

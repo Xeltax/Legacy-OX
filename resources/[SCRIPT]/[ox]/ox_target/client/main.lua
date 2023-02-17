@@ -26,7 +26,7 @@ local GetEntityType = GetEntityType
 local HasEntityClearLosToEntity = HasEntityClearLosToEntity
 local GetCurrentZone = GetCurrentZone
 local PlayerHasGroups = PlayerHasGroups or function() return true end
-local PlayerHasItems = PlayerHasItems or function() return true end
+local PlayerHasItems = PlayerHasItems
 local GetEntityBoneIndexByName = GetEntityBoneIndexByName
 local GetWorldPositionOfEntityBone = GetWorldPositionOfEntityBone
 local next = next
@@ -148,7 +148,7 @@ local function enableTargeting()
                         hide = true
                     end
 
-                    if option.items and not PlayerHasItems(option.items) then
+                    if option.items and not PlayerHasItems(option.items, option.anyItem) then
                         hide = true
                     end
 
