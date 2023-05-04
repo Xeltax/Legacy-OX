@@ -1,17 +1,13 @@
 if GetResourceState('es_extended') == 'missing' then return end
 
 local groups = { 'job', 'job2' }
-PlayerItems = {}
 local playerGroups = {}
+local usingOxInventory = GetResourceState('ox_inventory') ~= 'missing'
+PlayerItems = {}
 
 local function setPlayerData(playerData)
-    if playerData.inventory then
-        for _, v in pairs(playerData.inventory) do
-            if v.count > 0 then
-                PlayerItems[v.name] = v.count
-            end
-        end
-    end
+    table.wipe(playerGroups)
+    table.wipe(PlayerItems)
 
     for i = 1, #groups do
         local group = groups[i]
@@ -21,6 +17,14 @@ local function setPlayerData(playerData)
             playerGroups[group] = data
         end
     end
+
+    if usingOxInventory or not playerData.inventory then return end
+
+    for _, v in pairs(playerData.inventory) do
+        if v.count > 0 then
+            PlayerItems[v.name] = v.count
+        end
+    end
 end
 
 SetTimeout(0, function()
@@ -28,15 +32,6 @@ SetTimeout(0, function()
 
     if ESX.PlayerLoaded then
         setPlayerData(ESX.PlayerData)
-    end
-
-    if GetResourceState('ox_inventory') ~= 'missing' then
-        setmetatable(PlayerItems, {
-            __index = function(self, index)
-                self[index] = exports.ox_inventory:Search('count', index) or 0
-                return self[index]
-            end
-        })
     end
 end)
 
@@ -53,6 +48,14 @@ end)
 RegisterNetEvent('esx:setJob2', function(job)
     if source == '' then return end
     playerGroups.job2 = job
+end)
+
+RegisterNetEvent('esx:addInventoryItem', function(name, count)
+    PlayerItems[name] = count
+end)
+
+RegisterNetEvent('esx:removeInventoryItem', function(name, count)
+    PlayerItems[name] = count
 end)
 
 function PlayerHasGroups(filter)
@@ -90,11 +93,3 @@ function PlayerHasGroups(filter)
         end
     end
 end
-
-RegisterNetEvent('esx:addInventoryItem', function(name, count)
-    PlayerItems[name] = count
-end)
-
-RegisterNetEvent('esx:removeInventoryItem', function(name, count)
-    PlayerItems[name] = count
-end)

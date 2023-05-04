@@ -181,7 +181,7 @@ function Core.SavePlayer(xPlayer, cb)
     {json.encode(xPlayer.getAccounts(true)), xPlayer.job.name, xPlayer.job.grade, xPlayer.job2.name, xPlayer.job2.grade, xPlayer.group, json.encode(xPlayer.getCoords()),
      json.encode(xPlayer.getInventory(true)), json.encode(xPlayer.getLoadout(true)), xPlayer.identifier}, function(affectedRows)
       if affectedRows == 1 then
-        print(('[^2INFO^7] Saved player ^5"%s^7"'):format(xPlayer.name))
+        --print(('[^2INFO^7] Saved player ^5"%s^7"'):format(xPlayer.name))
         TriggerEvent('esx:playerSaved', xPlayer.playerId, xPlayer)
       end
       if cb then

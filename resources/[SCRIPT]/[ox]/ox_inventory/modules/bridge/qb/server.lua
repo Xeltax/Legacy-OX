@@ -2,8 +2,8 @@ local playerDropped = ...
 local Inventory, Items
 
 CreateThread(function()
-	Inventory = server.inventory
-	Items = server.items
+	Inventory = require 'modules.inventory.server'
+	Items = require 'modules.items.server'
 end)
 
 local QBCore
@@ -73,7 +73,7 @@ local function setupPlayer(Player)
 
 	QBCore.Functions.AddPlayerMethod(Player.PlayerData.source, "SetInventory", function()
 		-- ox_inventory's item structure is not compatible with qb-inventory's one so we don't support it
-		shared.info('Player.Functions.SetInventory is unsupported for ox_inventory, please use exports.ox_inventory:setPlayerInventory instead.')
+		error('Player.Functions.SetInventory is unsupported for ox_inventory. Try ClearInventory, then add the desired items.')
 	end)
 end
 
@@ -113,6 +113,7 @@ AddEventHandler('QBCore:Server:OnMoneyChange', function(src, account, amount, ch
 	Inventory.SetItem(src, 'money', changeType == "set" and amount or changeType == "remove" and item.count - amount or changeType == "add" and item.count + amount)
 end)
 
+---@diagnostic disable-next-line: duplicate-set-field
 function server.setPlayerData(player)
 	local groups = {
 		[player.job.name] = player.job.grade.level,
@@ -130,6 +131,7 @@ function server.setPlayerData(player)
 	}
 end
 
+---@diagnostic disable-next-line: duplicate-set-field
 function server.syncInventory(inv)
 	local money = table.clone(server.accounts)
 
@@ -143,11 +145,13 @@ function server.syncInventory(inv)
 	player.syncInventory(inv.weight, inv.maxWeight, inv.items, money)
 end
 
+---@diagnostic disable-next-line: duplicate-set-field
 function server.hasLicense(inv, license)
 	local player = server.GetPlayerFromId(inv.id)
 	return player and player.PlayerData.metadata.licences[license]
 end
 
+---@diagnostic disable-next-line: duplicate-set-field
 function server.buyLicense(inv, license)
 	local player = server.GetPlayerFromId(inv.id)
 	if not player then return end
@@ -170,6 +174,7 @@ end
 --- Old: {1:{"name": "cola", "amount": 1, "label": "Cola", "slot": 1}, 2:{"name": "burger", "amount": 3, "label": "Burger", "slot": 2}}
 --- New: [{"slot":1,"name":"cola","count":1}, {"slot":2,"name":"burger","count":3}]
 ---```
+---@diagnostic disable-next-line: duplicate-set-field
 function server.convertInventory(playerId, items)
 	if type(items) == 'table' then
 		local player = server.GetPlayerFromId(playerId)
@@ -211,21 +216,33 @@ function server.convertInventory(playerId, items)
 	end
 end
 
-function server.setPlayerStatus(playerId, values)
+---@diagnostic disable-next-line: duplicate-set-field
+function server.isPlayerBoss(playerId)
 	local Player = QBCore.Functions.GetPlayer(playerId)
 
-	if not Player then return end
-
-	local playerMetadata = Player.PlayerData.metadata
-
-	for name, value in pairs(values) do
-		if playerMetadata[name] then
-			if value > 100 or value < -100 then
-				value = value * 0.0001
-			end
-
-			Player.Functions.SetMetaData(name, playerMetadata[name] + value)
-		end
-	end
+	return Player.PlayerData.job.isboss or Player.PlayerData.gang.isboss
 end
 
+-- taken from qbox-core (https://github.com/Qbox-project/qb-core/blob/f4174f311aae8157181a48fa2e2bd30c8d13edb1/client/functions.lua#L25)
+-- copied from client-side implementation and completely untested (have fun)
+local function hasItem(source, items, amount)
+    amount = amount or 1
+
+    local count = Inventory.Search(source, 'count', items)
+
+    if type(items) == 'table' and type(count) == 'table' then
+        for _, v in pairs(count) do
+            if v < amount then
+                return false
+            end
+        end
+
+        return true
+    end
+
+    return count >= amount
+end
+
+AddEventHandler(('__cfx_export_qb-inventory_HasItem'), function(setCB)
+	setCB(hasItem)
+end)

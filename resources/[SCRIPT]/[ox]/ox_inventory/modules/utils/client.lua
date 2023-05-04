@@ -79,6 +79,7 @@ end
 
 RegisterNetEvent('ox_inventory:itemNotify', Utils.ItemNotify)
 
+---@deprecated
 function Utils.DeleteObject(obj)
 	SetEntityAsMissionEntity(obj, false, true)
 	DeleteObject(obj)
@@ -115,4 +116,4 @@ function Utils.CreateBlip(settings, coords)
 	return blip
 end
 
-client.utils = Utils
+return Utils

@@ -113,6 +113,10 @@ if playerItems and GetResourceState('ox_inventory') ~= 'missing' then
             return self[index]
         end
     })
+
+    AddEventHandler('ox_inventory:itemCount', function(name, count)
+        playerItems[name] = count
+    end)
 end
 
 function PlayerHasItems(filter, hasAny)
@@ -121,13 +125,13 @@ function PlayerHasItems(filter, hasAny)
     local _type = type(filter)
 
     if _type == 'string' then
-        return playerItems[filter] and true
+        return (playerItems[filter] or 0) > 0
     elseif _type == 'table' then
         local tabletype = table.type(filter)
 
         if tabletype == 'hash' then
             for name, amount in pairs(filter) do
-                local hasItem = (playerItems[name] or 0) < amount
+                local hasItem = (playerItems[name] or 0) >= amount
 
                 if hasAny then
                     if hasItem then return true end
@@ -137,7 +141,7 @@ function PlayerHasItems(filter, hasAny)
             end
         elseif tabletype == 'array' then
             for i = 1, #filter do
-                local hasItem = playerItems[filter[i]]
+                local hasItem = (playerItems[filter[i]] or 0) > 0
 
                 if hasAny then
                     if hasItem then return true end

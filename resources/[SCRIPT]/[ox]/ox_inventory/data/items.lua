@@ -26,6 +26,27 @@ return {
 				action = function(slot)
 					print('You squeezed the burger :(')
 				end
+			},
+			{
+				label = 'What do you call a vegan burger?',
+				group = 'Hamburger Puns',
+				action = function(slot)
+					print('A misteak.')
+				end
+			},
+			{
+				label = 'What do frogs like to eat with their hamburgers?',
+				group = 'Hamburger Puns',
+				action = function(slot)
+					print('French flies.')
+				end
+			},
+			{
+				label = 'Why were the burger and fries running?',
+				group = 'Hamburger Puns',
+				action = function(slot)
+					print('Because they\'re fast food.')
+				end
 			}
 		},
 		consume = 0.3
@@ -195,235 +216,514 @@ return {
 		weight = 80,
 	},
 
-	['alive_chicken'] = {
-		label = 'Living chicken',
+	["ak47"] = {
+		label = "Poudre de AK-47",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['blowpipe'] = {
-		label = 'Blowtorch',
+	["ak47_head"] = {
+		label = "Tête de AK-47",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["ak47_seed"] = {
+		label = "Graine de AK-47",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["alive_chicken"] = {
+		label = "Living chicken",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["amnesia"] = {
+		label = "Poudre d'Amnésia",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["amnesia_head"] = {
+		label = "Tête d'Amnésia",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["amnesia_seed"] = {
+		label = "Graine d'Amnésia",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["blowpipe"] = {
+		label = "Blowtorch",
 		weight = 2,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['bread'] = {
-		label = 'Bread',
+	["blueberry"] = {
+		label = "Poudre de BlueBerry",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['cannabis'] = {
-		label = 'Cannabis',
+	["blueberry_head"] = {
+		label = "Tête de BlueBerry",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["blueberry_seed"] = {
+		label = "Graine de BlueBerry",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["bread"] = {
+		label = "Bread",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["cannabis"] = {
+		label = "Cannabis",
 		weight = 3,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['carokit'] = {
-		label = 'Body Kit',
+	["carokit"] = {
+		label = "Body Kit",
 		weight = 3,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['carotool'] = {
-		label = 'Tools',
+	["carotool"] = {
+		label = "Tools",
 		weight = 2,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['clothe'] = {
-		label = 'Cloth',
+	["clothe"] = {
+		label = "Cloth",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['copper'] = {
-		label = 'Copper',
+	["copper"] = {
+		label = "Copper",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['cutted_wood'] = {
-		label = 'Cut wood',
+	["cutted_wood"] = {
+		label = "Cut wood",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['diamond'] = {
-		label = 'Diamond',
+	["diamond"] = {
+		label = "Diamond",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['essence'] = {
-		label = 'Gas',
+	["essence"] = {
+		label = "Gas",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['fabric'] = {
-		label = 'Fabric',
+	["fabric"] = {
+		label = "Fabric",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['fish'] = {
-		label = 'Fish',
+	["fertilizer"] = {
+		label = "Fertilisant pour cannabis",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['fixkit'] = {
-		label = 'Repair Kit',
+	["fish"] = {
+		label = "Fish",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["fixkit"] = {
+		label = "Repair Kit",
 		weight = 3,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['fixtool'] = {
-		label = 'Repair Tools',
+	["fixtool"] = {
+		label = "Repair Tools",
 		weight = 2,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['gazbottle'] = {
-		label = 'Gas Bottle',
+	["g13"] = {
+		label = "Poudre de G13",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["g13_head"] = {
+		label = "Tête de G13",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["g13_seed"] = {
+		label = "Graine de G13",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["gazbottle"] = {
+		label = "Gas Bottle",
 		weight = 2,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['gold'] = {
-		label = 'Gold',
+	["godgift"] = {
+		label = "Poudre de God's Gift",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['iron'] = {
-		label = 'Iron',
+	["godgift_head"] = {
+		label = "Tête de God's Gift",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['marijuana'] = {
-		label = 'Marijuana',
+	["godgift_seed"] = {
+		label = "Graine de God's Gift",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["gold"] = {
+		label = "Gold",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["haze"] = {
+		label = "Poudre de Haze",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["haze_head"] = {
+		label = "Tête de Haze",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["haze_seed"] = {
+		label = "Graine de Haze",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["iron"] = {
+		label = "Iron",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_ak47"] = {
+		label = "Joint de AK-47",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_amnesia"] = {
+		label = "Joint d'Amnésia",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_blueberry"] = {
+		label = "Joint de BlueBerry",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_deadinside"] = {
+		label = "Joint de Dead Inside",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_g13"] = {
+		label = "Joint de G13",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_godgift"] = {
+		label = "Joint de God's Gift",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_gohome"] = {
+		label = "Joint de Go To Home",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_haze"] = {
+		label = "Joint de Haze",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_imspeed"] = {
+		label = "Joint de Im Speed",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_lemonhaze"] = {
+		label = "Joint de Lemon Haze",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_pollen"] = {
+		label = "Joint de Pollen",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_skunk"] = {
+		label = "Joint de Skunk",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_travel"] = {
+		label = "Joint de Travel The World",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["joint_whitewidow"] = {
+		label = "Joint de White Widow",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["lemonhaze"] = {
+		label = "Poudre de Lemon Haze",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["lemonhaze_head"] = {
+		label = "Tête de Lemon Haze",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["lemonhaze_seed"] = {
+		label = "Graine de Lemon Haze",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["marijuana"] = {
+		label = "Marijuana",
 		weight = 2,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['medikit'] = {
-		label = 'Medikit',
+	["medikit"] = {
+		label = "Medikit",
 		weight = 2,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['packaged_chicken'] = {
-		label = 'Chicken fillet',
+	["packaged_chicken"] = {
+		label = "Chicken fillet",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['packaged_plank'] = {
-		label = 'Packaged wood',
+	["packaged_plank"] = {
+		label = "Packaged wood",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['petrol'] = {
-		label = 'Oil',
+	["petrol"] = {
+		label = "Oil",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['petrol_raffin'] = {
-		label = 'Processed oil',
+	["petrol_raffin"] = {
+		label = "Processed oil",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['slaughtered_chicken'] = {
-		label = 'Slaughtered chicken',
+	["pollen"] = {
+		label = "Pollen de cannabis",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['stone'] = {
-		label = 'Stone',
+	["skunk"] = {
+		label = "Poudre de Skunk",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['washed_stone'] = {
-		label = 'Washed stone',
+	["skunk_head"] = {
+		label = "Tête de Skunk",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['wood'] = {
-		label = 'Wood',
+	["skunk_seed"] = {
+		label = "Graine de Skunk",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
 	},
 
-	['wool'] = {
-		label = 'Wool',
+	["slaughtered_chicken"] = {
+		label = "Slaughtered chicken",
 		weight = 1,
 		stack = true,
 		close = true,
-		description = nil
+	},
+
+	["stone"] = {
+		label = "Stone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["washed_stone"] = {
+		label = "Washed stone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["weed_seed"] = {
+		label = "Graine de Weed",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["whitewidow"] = {
+		label = "Poudre de White Widow",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["whitewidow_head"] = {
+		label = "Tête de White Widow",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["whitewidow_seed"] = {
+		label = "Graine de White Widow",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["wood"] = {
+		label = "Wood",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["wool"] = {
+		label = "Wool",
+		weight = 1,
+		stack = true,
+		close = true,
 	},
 }

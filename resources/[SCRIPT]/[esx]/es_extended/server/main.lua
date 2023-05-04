@@ -116,7 +116,7 @@ function loadESXPlayer(identifier, playerId, isNew)
 
   local result = MySQL.prepare.await(loadPlayer, {identifier})
   local job, grade, jobObject, gradeObject = result.job, tostring(result.job_grade)
-	local job2 = result.job2
+	local job2, grade2, jobObject2, gradeObject2 = result.job2, tostring(result.job2_grade)
   local foundAccounts, foundItems = {}, {}
 
   -- Accounts
@@ -171,31 +171,31 @@ function loadESXPlayer(identifier, playerId, isNew)
   end
 
 	-- Job2
-	if ESX.DoesJobExist(job2, grade) then
-		jobObject, gradeObject = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade]
+	if ESX.DoesJobExist(job2, grade2) then
+		jobObject2, gradeObject2 = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade2]
 	else
-		print(('[^3WARNING^7] Ignoring invalid job for ^5%s^7 [job2: ^5%s^7, grade: ^5%s^7]'):format(identifier, job2, grade))
-		job2, grade = 'unemployed', '0'
-		jobObject, gradeObject = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade]
+		print(('[^3WARNING^7] Ignoring invalid job for ^5%s^7 [job2: ^5%s^7, grade: ^5%s^7]'):format(identifier, job2, grade2))
+		job2, grade2 = 'unemployed', '0'
+		jobObject2, gradeObject2 = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade2]
 	end
 
-	userData.job2.id = jobObject.id
-	userData.job2.name = jobObject.name
-	userData.job2.label = jobObject.label
+	userData.job2.id = jobObject2.id
+	userData.job2.name = jobObject2.name
+	userData.job2.label = jobObject2.label
 
-	userData.job2.grade = tonumber(grade)
-	userData.job2.grade_name = gradeObject.name
-	userData.job2.grade_label = gradeObject.label
-	userData.job2.grade_salary = gradeObject.salary
+	userData.job2.grade = tonumber(grade2)
+	userData.job2.grade_name = gradeObject2.name
+	userData.job2.grade_label = gradeObject2.label
+	userData.job2.grade_salary = gradeObject2.salary
 
 	userData.job2.skin_male = {}
 	userData.job2.skin_female = {}
 
-	if gradeObject.skin_male then
-		userData.job2.skin_male = json.decode(gradeObject.skin_male)
+	if gradeObject2.skin_male then
+		userData.job2.skin_male = json.decode(gradeObject2.skin_male)
 	end
-	if gradeObject.skin_female then
-		userData.job2.skin_female = json.decode(gradeObject.skin_female)
+	if gradeObject2.skin_female then
+		userData.job2.skin_female = json.decode(gradeObject2.skin_female)
 	end
 
   -- Inventory

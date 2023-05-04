@@ -1,28 +1,12 @@
 if not lib then return end
 
----@overload fun(name: string): OxServerItem
 local Items = {}
-local ItemList = shared.items
----@cast ItemList { [string]: OxServerItem }
+local ItemList = require 'modules.items.shared' --[[@as table<string, OxServerItem>]]
+local Utils = require 'modules.utils.server'
 
 TriggerEvent('ox_inventory:itemList', ItemList)
 
--- Slot count and maximum weight for containers
--- Whitelist and blacklist: ['item_name'] = true
-Items.containers = {
-	['paperbag'] = {
-		size = {5, 1000},
-		blacklist = {
-			['testburger'] = true -- No burgers!
-		}
-	},
-	['pizzabox'] = {
-		size = {1, 1000},
-		whitelist = {
-			['pizza'] = true -- Pizza box for pizza only
-		}
-	}
-}
+Items.containers = require 'modules.items.containers'
 
 -- Possible metadata when creating garbage
 local trash = {
@@ -58,6 +42,9 @@ setmetatable(Items --[[@as table]], {
 	__call = getItem
 })
 
+---@cast Items +fun(itemName: string): OxServerItem
+---@cast Items +fun(): table<string, OxServerItem>
+
 -- Support both names
 exports('Items', function(item) return getItem(nil, item) end)
 exports('ItemList', function(item) return getItem(nil, item) end)
@@ -65,7 +52,7 @@ exports('ItemList', function(item) return getItem(nil, item) end)
 local Inventory
 
 CreateThread(function()
-	Inventory = server.inventory
+	Inventory = require 'modules.inventory.server'
 
 	if shared.framework == 'esx' then
 		local success, items = pcall(MySQL.query.await, 'SELECT * FROM items')
@@ -91,25 +78,28 @@ CreateThread(function()
 				local file = {string.strtrim(LoadResourceFile(shared.resource, 'data/items.lua'))}
 				file[1] = file[1]:gsub('}$', '')
 
+				---@todo separate into functions for reusability, properly handle nil values
 				local itemFormat = [[
 
-	['%s'] = {
-		label = '%s',
+	[%q] = {
+		label = %q,
 		weight = %s,
 		stack = %s,
 		close = %s,
-		description = %s
+		description = %q
 	},
 ]]
 				local fileSize = #file
 
 				for _, item in pairs(dump) do
-					local formatName = item.name:gsub("'", "\\'"):lower()
-					if not ItemList[formatName] then
+					if not ItemList[item.name] then
 						fileSize += 1
 
-						file[fileSize] = (itemFormat):format(formatName, item.label:gsub("'", "\\'"), item.weight, item.stack, item.close, item.description and json.encode(item.description) or 'nil')
-						ItemList[formatName] = item
+						local itemStr = itemFormat:format(item.name, item.label, item.weight, item.stack, item.close, item.description and json.encode(item.description) or 'nil')
+						-- temporary solution for nil values
+						itemStr = itemStr:gsub('[%s]-[%w]+ = "?nil"?,?', '')
+						file[fileSize] = itemStr
+						ItemList[item.name] = item
 					end
 				end
 
@@ -121,8 +111,6 @@ CreateThread(function()
 			end
 
 			shared.info('Database contains', #items, 'items.')
-
-			warn('Some third-party resources may conflict with item and inventory data structure.\n')
 		end
 
 		Wait(500)
@@ -131,7 +119,7 @@ CreateThread(function()
 		local QBCore = exports['qb-core']:GetCoreObject()
 		local items = QBCore.Shared.Items
 
-		if table.type(items) ~= "empty" then
+		if items and table.type(items) ~= 'empty' then
 			local dump = {}
 			local count = 0
 			local ignoreList = {
@@ -161,39 +149,62 @@ CreateThread(function()
 			end
 
 			for k, item in pairs(items) do
-				if not ItemList[item.name] and not checkIgnoredNames(item.name) then
-					item.close = item.shouldClose == nil and true or item.shouldClose
-					item.stack = not item.unique and true
-					item.description = item.description
-					item.weight = item.weight or 0
-					dump[k] = item
-					count += 1
+				-- Explain why this wouldn't be table to me, because numerous people have been getting "attempted to index number" here
+				if type(item) == 'table' then
+					-- Some people don't assign the name property, but it seemingly always matches the index anyway.
+					if not item.name then item.name = k end
+
+					if not ItemList[item.name] and not checkIgnoredNames(item.name) then
+						item.close = item.shouldClose == nil and true or item.shouldClose
+						item.stack = not item.unique and true
+						item.description = item.description
+						item.weight = item.weight or 0
+						dump[k] = item
+						count += 1
+					end
 				end
 			end
 
-			if table.type(dump) ~= "empty" then
+			if table.type(dump) ~= 'empty' then
 				local file = {string.strtrim(LoadResourceFile(shared.resource, 'data/items.lua'))}
 				file[1] = file[1]:gsub('}$', '')
 
+				---@todo separate into functions for reusability, properly handle nil values
 				local itemFormat = [[
 
-	['%s'] = {
-		label = '%s',
+	[%q] = {
+		label = %q,
 		weight = %s,
 		stack = %s,
 		close = %s,
-		description = %s
+		description = %q,
+		client = {
+			status = {
+				hunger = %s,
+				thirst = %s,
+				stress = %s
+			},
+			image = %q,
+		}
 	},
 ]]
+
 				local fileSize = #file
 
 				for _, item in pairs(dump) do
-					local formatName = item.name:gsub("'", "\\'"):lower()
-					if not ItemList[formatName] then
+					if not ItemList[item.name] then
 						fileSize += 1
 
-						file[fileSize] = (itemFormat):format(formatName, item.label:gsub("'", "\\'"), item.weight, item.stack, item.close, item.description and json.encode(item.description) or 'nil')
-						ItemList[formatName] = item
+						---@todo cry
+						local itemStr = itemFormat:format(item.name, item.label, item.weight, item.stack, item.close, item.description or 'nil', item.hunger or 'nil', item.thirst or 'nil', item.stress or 'nil', item.image or 'nil')
+						-- temporary solution for nil values
+						itemStr = itemStr:gsub('[%s]-[%w]+ = "?nil"?,?', '')
+						-- temporary solution for empty status table
+						itemStr = itemStr:gsub('[%s]-[%w]+ = %{[%s]+%},?', '')
+						-- temporary solution for empty client table
+						itemStr = itemStr:gsub('[%s]-[%w]+ = %{[%s]+%},?', '')
+						file[fileSize] = itemStr
+						ItemList[item.name] = item
 					end
 				end
 
@@ -257,10 +268,20 @@ local function setItemDurability(item, metadata)
 	return metadata
 end
 
+local TriggerEventHooks = require 'modules.hooks.server'
+
+---@param inv inventory
+---@param item OxServerItem
+---@param metadata table<string, any> | string | nil
+---@param count number
+---@return table, number
+---Generates metadata for new items being created through AddItem, buyItem, etc.
 function Items.Metadata(inv, item, metadata, count)
 	if type(inv) ~= 'table' then inv = Inventory(inv) end
 	if not item.weapon then metadata = not metadata and {} or type(metadata) == 'string' and {type=metadata} or metadata end
 	if not count then count = 1 end
+
+	---@cast metadata table<string, any>
 
 	if item.weapon then
 		if type(metadata) ~= 'table' then metadata = {} end
@@ -336,6 +357,11 @@ function Items.Metadata(inv, item, metadata, count)
 	return metadata, count
 end
 
+---@param metadata table<string, any>
+---@param item OxServerItem
+---@param name string
+---@param ostime number
+---Validate (and in some cases convert) item metadata when an inventory is being loaded.
 function Items.CheckMetadata(metadata, item, name, ostime)
 	if metadata.bag then
 		metadata.container = metadata.bag
@@ -353,30 +379,36 @@ function Items.CheckMetadata(metadata, item, name, ostime)
 		metadata = setItemDurability(item, metadata)
 	end
 
-	if metadata.components then
-		if table.type(metadata.components) == 'array' then
-			for i = #metadata.components, 1, -1 do
-				if not ItemList[metadata.components[i]] then
-					table.remove(metadata.components, i)
+	if item.weapon then
+		if metadata.components then
+			if table.type(metadata.components) == 'array' then
+				for i = #metadata.components, 1, -1 do
+					if not ItemList[metadata.components[i]] then
+						table.remove(metadata.components, i)
+					end
 				end
-			end
-		else
-			local components = {}
-			local size = 0
+			else
+				local components = {}
+				local size = 0
 
-			for _, component in pairs(metadata.components) do
-				if component and ItemList[component] then
-					size += 1
-					components[size] = component
+				for _, component in pairs(metadata.components) do
+					if component and ItemList[component] then
+						size += 1
+						components[size] = component
+					end
 				end
-			end
 
-			metadata.components = components
+				metadata.components = components
+			end
 		end
-	end
 
-	if metadata.serial and item.weapon and not item.ammoname then
-		metadata.serial = nil
+		if metadata.serial and item.throwable then
+			metadata.serial = nil
+		end
+
+		if metadata.specialAmmo and type(metadata.specialAmmo) ~= 'string' then
+			metadata.specialAmmo = nil
+		end
 	end
 
 	return metadata
@@ -413,4 +445,4 @@ end
 
 -----------------------------------------------------------------------------------------------
 
-server.items = Items
+return Items

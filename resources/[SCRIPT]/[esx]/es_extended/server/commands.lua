@@ -214,6 +214,12 @@ end, true, {help = TranslateCap('command_save'), validate = true, arguments = {
 	{name = 'playerId', help = TranslateCap('commandgeneric_playerid'), type = 'player'}
 }})
 
+ESX.RegisterCommand('ghostSave', 'admin', function(xPlayer, args, showError)
+	Core.SavePlayer(args.playerId)
+end, true, {help = TranslateCap('command_save'), validate = true, arguments = {
+	{name = 'playerId', help = TranslateCap('commandgeneric_playerid'), type = 'player'}
+}})
+
 ESX.RegisterCommand('saveall', 'admin', function(xPlayer, args, showError)
 	Core.SavePlayers()
 end, true, {help = TranslateCap('command_saveall')})
@@ -256,6 +262,25 @@ ESX.RegisterCommand('bring', "admin", function(xPlayer, args, showError)
 	args.playerId.setCoords(playerCoords)
 end, true, {help = TranslateCap('command_bring'), validate = true, arguments = {
 	{name = 'playerId', help = TranslateCap('commandgeneric_playerid'), type = 'player'}
+}})
+
+ESX.RegisterCommand('tptocoords', "admin", function(xPlayer, args, showError)
+	local playerCoords = xPlayer.getCoords()
+	args.playerId.setCoords(vector3(args.x, args.y, args.z))
+end, true, {help = "id du joueurs et pos x y z", validate = true, arguments = {
+	{name = 'playerId', help = TranslateCap('commandgeneric_playerid'), type = 'player'},
+	{name = 'x', help = "position x", type = 'number'},
+	{name = 'y', help = "position y", type = 'number'},
+	{name = 'z', help = "position z", type = 'number'},
+}})
+
+ESX.RegisterCommand('tpto', "admin", function(xPlayer,args, showError)
+	local vide = xPlayer.getCoords()
+	local playerCoords = args.playerId.getCoords()
+	args.targetId.setCoords(playerCoords)
+end, true, {help = "téléporter un joueur vers un autre", validate = true, arguments = {
+	{name = 'playerId', help = "id du joueur vers qui tp", type = 'player'},
+	{name = 'targetId', help = "id du joueur à tp", type = 'player'},
 }})
 
 ESX.RegisterCommand('kill', "admin", function(xPlayer, args, showError)

@@ -1,15 +1,11 @@
 local alert = nil
-local keepInput = IsNuiFocusKeepingInput()
-
-local function resetFocus()
-    SetNuiFocus(false, false)
-    SetNuiFocusKeepInput(keepInput)
-end
 
 ---@class AlertDialogProps
 ---@field header string;
 ---@field content string;
 ---@field centered? boolean?;
+---@field size? 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+---@field overflow? boolean?;
 ---@field cancel? boolean?;
 ---@field labels? {cancel?: string, confirm?: string}
 
@@ -17,12 +13,10 @@ end
 ---@return 'cancel' | 'confirm' | nil
 function lib.alertDialog(data)
     if alert then return end
+
     alert = promise.new()
 
-    keepInput = IsNuiFocusKeepingInput()
-
-    SetNuiFocus(true, true)
-    SetNuiFocusKeepInput(false)
+    lib.setNuiFocus(false)
     SendNUIMessage({
         action = 'sendAlert',
         data = data
@@ -33,20 +27,24 @@ end
 
 function lib.closeAlertDialog()
     if not alert then return end
-    alert:resolve(nil)
-    alert = nil
-    resetFocus()
+
+    lib.resetNuiFocus()
     SendNUIMessage({
         action = 'closeAlertDialog'
     })
+
+    alert:resolve(nil)
+    alert = nil
 end
 
 
 RegisterNUICallback('closeAlert', function(data, cb)
     cb(1)
-    resetFocus()
+    lib.resetNuiFocus()
+
     local promise = alert
     alert = nil
+
     promise:resolve(data)
 end)
 

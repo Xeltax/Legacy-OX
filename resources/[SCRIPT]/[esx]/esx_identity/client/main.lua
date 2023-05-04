@@ -28,45 +28,44 @@ RegisterNUICallback('ready', function(data, cb)
     cb(1)
 end)
 
-if not Config.UseDeferrals then
-    function setGuiState(state)
-        SetNuiFocus(state, state)
-        guiEnabled = state
+function setGuiState(state)
+    SetNuiFocus(state, state)
+    guiEnabled = state
 
-        if state then
-            SetTimecycleModifier(timecycleModifier)
-        else
-            ClearTimecycleModifier()
-        end
-
-        SendNUIMessage({type = "enableui", enable = state})
+    if state then
+        SetTimecycleModifier(timecycleModifier)
+    else
+        ClearTimecycleModifier()
     end
 
-    RegisterNetEvent('esx_identity:showRegisterIdentity', function()
-        TriggerEvent('esx_skin:resetFirstSpawn')
-        while not ready do
-            print('Waiting for  esx_identity NUI..')
-            Wait(100)
-        end
-        if not ESX.PlayerData.dead then setGuiState(true) end
-    end)
+    SendNUIMessage({type = "enableui", enable = state})
+end
 
-    RegisterNUICallback('register', function(data, cb)
-        if not guiEnabled then
+RegisterNetEvent('esx_identity:showRegisterIdentity', function()
+    TriggerEvent('esx_skin:resetFirstSpawn')
+    while not ready do
+        print('Waiting for  esx_identity NUI..')
+        Wait(100)
+    end
+    if not ESX.PlayerData.dead then setGuiState(true) end
+end)
+
+RegisterNUICallback('register', function(data, cb)
+    if not guiEnabled then
+        return
+    end
+
+    ESX.TriggerServerCallback('esx_identity:registerIdentity', function(callback)
+        if not callback then
             return
         end
 
-        ESX.TriggerServerCallback('esx_identity:registerIdentity', function(callback)
-            if not callback then
-                return
-            end
+        ESX.ShowNotification(TranslateCap('thank_you_for_registering'))
+        setGuiState(false)
 
-            ESX.ShowNotification(TranslateCap('thank_you_for_registering'))
-            setGuiState(false)
+        if not ESX.GetConfig().Multichar then
+            TriggerEvent('esx_skin:playerRegistered')
+        end
+    end, data)
+end)
 
-            if not ESX.GetConfig().Multichar then
-                TriggerEvent('esx_skin:playerRegistered')
-            end
-        end, data)
-    end)
-end

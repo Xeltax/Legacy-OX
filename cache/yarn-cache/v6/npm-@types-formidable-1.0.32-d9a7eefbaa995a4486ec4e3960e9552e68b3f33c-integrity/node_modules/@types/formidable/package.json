@@ -1,0 +1,26 @@
+{
+    "name": "@types/formidable",
+    "version": "1.0.32",
+    "description": "TypeScript definitions for Formidable",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Wim Looman",
+            "url": "https://github.com/Nemo157",
+            "githubUsername": "Nemo157"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/formidable"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/node": "*"
+    },
+    "typesPublisherContentHash": "65cf49d0399f3ddf9174c07da587cef04ccacdfc77f62841a5c68516491a3ce1",
+    "typeScriptVersion": "3.3"
+}
